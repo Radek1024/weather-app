@@ -10,9 +10,12 @@
 </head>
 <body>
 
-
 <div class="cityName">
     <h1>Pogoda dla <th:block th:text="${weather.getCityName()}"></th:block></h1>
+</div>
+
+<div class="weatherDescription" th:each="val : ${weather.getWeather()}">
+    <p th:text="${val.getDescription()}">
 </div>
 
 <div class="temperature">
@@ -23,9 +26,11 @@
     <p>zachmurzenie <th:block th:text="${weather.getClouds().getAll()}"></th:block>%</p>
 </div>
 
-<div class="weatherDescription" th:each="val : ${weather.getWeather()}">
-    <p th:text="${val.getDescription()}">
-</div>
+
+
+<form class="button" th:action="@{/}" method="post">
+    <button type="submit">wyszukaj ponownie</button>
+</form>
 
 <div class="footer" th:insert="Footer"></div>
 

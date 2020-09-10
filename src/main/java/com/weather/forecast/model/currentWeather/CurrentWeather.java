@@ -16,8 +16,8 @@ public class CurrentWeather {
     private String base;
     private Main main;
     private Clouds clouds;
-    private Map<String,Integer> rain;
-    private Map<String,Integer> snow;
+    private Rain rain;
+    private Snow snow;
     private Sys sys;
     private int Timezone;
     @JsonProperty("id")

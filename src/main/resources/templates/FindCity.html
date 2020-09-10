@@ -11,8 +11,8 @@
 </head>
 <body>
 
-<h1>wyszukaj miasto</h1>
 <div class="searchMenu" th:fragment="searchMenu">
+    <h1>wyszukaj miasto</h1>
     <form th:action="@{/result}"  th:object="${currentWeather}" method="post">
         <input type="text" th:field="*{cityName}" placeholder="miasto"><br><br>
         <input type="submit" value="search">
