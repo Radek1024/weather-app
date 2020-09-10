@@ -1,4 +1,4 @@
-package com.weather.forecast.model;
+package com.weather.forecast.model.currentWeather;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,5 +7,4 @@ import lombok.NoArgsConstructor;
 @Data
 public class Clouds {
     private int all;
-
 }

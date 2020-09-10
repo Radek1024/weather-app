@@ -1,21 +1,23 @@
-package com.weather.forecast.model;
+package com.weather.forecast.model.currentWeather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 @NoArgsConstructor
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties
 public class CurrentWeather {
-    private Coord coord;
+    private Map<String,Double> coord;
     private Weather[] weather;
     private String base;
     private Main main;
     private Clouds clouds;
-    private Rain rain;
-    private Snow snow;
+    private Map<String,Integer> rain;
+    private Map<String,Integer> snow;
     private Sys sys;
     private int Timezone;
     @JsonProperty("id")

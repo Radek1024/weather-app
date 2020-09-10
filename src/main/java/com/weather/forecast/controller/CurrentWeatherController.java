@@ -1,21 +1,28 @@
 package com.weather.forecast.controller;
 
-import com.weather.forecast.model.CurrentWeather;
+import com.weather.forecast.model.currentWeather.CurrentWeather;
 import com.weather.forecast.service.CurrentWeatherService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class CurrentWeatherController {
     private final CurrentWeatherService currentWeatherService;
 
-    @GetMapping("/api/{city}")
-    public CurrentWeather getApi(@PathVariable String city){
-        return currentWeatherService.getData(city);
+    @RequestMapping("/")
+    public String getIndex(Model model){
+        CurrentWeather currentWeather = new CurrentWeather();
+        model.addAttribute("currentWeather", currentWeather);
+        return "FindCity";
+    }
+
+    @PostMapping("/result")
+    public String getApi(String cityName, Model model){
+        model.addAttribute("weather",currentWeatherService.getData(cityName));
+        return "Index";
     }
 
 

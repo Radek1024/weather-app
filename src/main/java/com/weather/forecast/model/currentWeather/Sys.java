@@ -1,4 +1,4 @@
-package com.weather.forecast.model;
+package com.weather.forecast.model.currentWeather;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 public class Sys {
     private int type;
     private int id;
-    private String Message;
-    private String Country;
+    private String message;
+    private String country;
     private int sunrise;
     private int sunset;
 }

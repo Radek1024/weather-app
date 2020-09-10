@@ -3,28 +3,20 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta charset="UTF-8" >
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/Footer.html}"/>
-    <title>Pogoda</title>
+    <title>Znajdź miasto</title>
+
 </head>
 <body>
 
-
-<div class="cityName">
-    <h1>Pogoda dla <th:block th:text="${weather.getCityName()}"></th:block></h1>
-</div>
-
-<div class="temperature">
-    <p>temperatura <th:block th:text="${weather.getMain().getTemp()}"></th:block>&#176;C</p>
-</div>
-
-<div class="clouds">
-    <p>zachmurzenie <th:block th:text="${weather.getClouds().getAll()}"></th:block>%</p>
-</div>
-
-<div class="weatherDescription" th:each="val : ${weather.getWeather()}">
-    <p th:text="${val.getDescription()}">
+<h1>wyszukaj miasto</h1>
+<div class="searchMenu" th:fragment="searchMenu">
+    <form th:action="@{/result}"  th:object="${currentWeather}" method="post">
+        <input type="text" th:field="*{cityName}" placeholder="miasto"><br><br>
+        <input type="submit" value="search">
+    </form>
 </div>
 
 <div class="footer" th:insert="Footer"></div>

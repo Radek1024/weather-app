@@ -1,8 +1,11 @@
-package com.weather.forecast.model;
+package com.weather.forecast.model.currentWeather;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@Data
 public class Main {
     private double temp;
     @JsonProperty("feels_like")

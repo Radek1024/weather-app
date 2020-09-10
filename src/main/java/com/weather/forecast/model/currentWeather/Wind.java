@@ -1,4 +1,4 @@
-package com.weather.forecast.model;
+package com.weather.forecast.model.currentWeather;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
