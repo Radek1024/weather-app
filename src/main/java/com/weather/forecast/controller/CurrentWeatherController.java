@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class CurrentWeatherController {
     private final CurrentWeatherService currentWeatherService;
 
-    @RequestMapping("/")
+    @RequestMapping("/api")
     public String getIndex(Model model){
         CurrentWeather currentWeather = new CurrentWeather();
         model.addAttribute("currentWeather", currentWeather);

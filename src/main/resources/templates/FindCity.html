@@ -11,10 +11,10 @@
 </head>
 <body>
 
-<div class="searchMenu" th:fragment="searchMenu">
+<div class="searchMenu">
     <h1>wyszukaj miasto</h1>
-    <form th:action="@{/result}"  th:object="${currentWeather}" method="post">
-        <input type="text" th:field="*{cityName}" placeholder="miasto"><br><br>
+    <form th:action="@{/weatherResult}" th:object="${cityObject}" method="post">
+        <input type="text" th:field="*{name}" placeholder="miasto"><br><br>
         <input type="submit" value="search">
     </form>
 </div>

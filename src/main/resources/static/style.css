@@ -1,5 +1,6 @@
 .header {
-    background-image: url("http://l-zone.info/wpcms/wp-content/uploads/2014/01/header_weather.jpg");
+    /*background-image: url("http://l-zone.info/wpcms/wp-content/uploads/2014/01/header_weather.jpg");*/
+    background-color: azure;
     background-size: cover ;
     background-position: center;
     text-align: center;
@@ -24,12 +25,6 @@
 
 .temperature {
     text-align: center;
-    margin: 30px;
-}
-
-p {
-    text-align: center;
-    color: black;
     padding: 20px;
 }
 
@@ -42,11 +37,11 @@ h1 {
 }
 
 body {
-    background-image: url("https://wallpapercave.com/wp/aZSazBV.jpg")  ;
+    /*background-image: url("https://wallpapercave.com/wp/aZSazBV.jpg");*/
+    background-color: beige;
     background-size: cover;
-    /*background-color: beige;*/
+    margin: 0 auto;
     background-position: center;
-    background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
@@ -58,12 +53,6 @@ body {
 
 }
 
-.clouds {
-    text-align: center;
-    padding: 20px;
-    align-content: center;
-}
-
 .weatherDescription{
     text-align: center;
     padding: 20px;
@@ -73,4 +62,27 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.pressure{
+    text-align: center;
+}
+
+li, p, h5{
+    display: inline;
+}
+.city-list-icon{
+    color: aqua;
+}
+.city-list-header{
+    display: inline;
+}
+div{
+    display: inline;
+}
+.city-list-dayOfWeek{
+    color: blueviolet;
+    font-size: 25px;
+}
+.city-list-hour{
+    display: inline;
 }
