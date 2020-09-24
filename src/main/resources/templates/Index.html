@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -21,60 +22,84 @@
     <br>
     <li class="city-list-date" th:text="${#temporals.format(#temporals.createNow(),'dd.MM.yyyy')}"></li>
     <br>
-
-
-    <li class="city-list-header" th:each="v, stat : ${firstDay}">
+    <li class="city-list-header" th:each="v, stat : ${firstDay.values()}">
         <div th:if="${v}">
-            <div class="city-list-hour" th:text="${#temporals.format(hours.get(stat.index),'hh:mm')}"></div>
+            <div class="city-list-hour" th:text="${#temporals.format(hours.get(stat.index),'HH:mm')}"></div>
         </div>
-        <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
-            <img th:src="@{'http://openweathermap.org/img/wn/10d@2x.png'}">
-        </div>
-        <div class="city-list-temp" th:text="${v?.getMain()?.getTemperature()}"></div>
-        <div class="city-list-pressure" th:text="${v?.getMain()?.getPressure()}"></div>
+            <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
+                <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${w.getIcon()})}">
+                <div th:text="${w.getDescription()}"></di>
+            </div>
+                <span th:text="${v.getDtTxt()}"></span>
+                    <div class="city-list-temp" th:text="${v?.getMain()?.getTemperature()}"></div>
+                    <span>&degC</span>
+                        <div class="city-list-pressure" th:text="${v?.getMain()?.getPressure()}"></div>
+                        <span>HPa</span>
         <br>
     </li>
-
-
     <br>
     <li class="city-list-dayOfWeek" th:text="${dayOfWeek.get(1)}"></li>
     <br>
     <li class="city-list-date" th:text="${#temporals.format(day.plusDays(1),'dd.MM.yyyy')}"></li>
     <br>
-    <li class="city-list-header" th:each="v,stat : ${secondDay}">
+    <li class="city-list-header" th:each="v, stat : ${secondDay.values()}">
         <div th:if="${v}">
-            <div th:text="${#temporals.format(hours.get(stat.index),'hh:mm')}"></div>
+            <div th:text="${#temporals.format(h.get(stat.index),'HH:mm')}"></div> <!--starts at 0 based on first day-->
         </div>
         <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
-            <span th:text="${w?.getIcon()}"></span>
-            <br>
+            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${w.getIcon()})}">
+            <span th:text="${w.getDescription()}"></span>
         </div>
+        <span th:text="${v.getDtTxt()}"></span>
+        <br>
     </li>
     <br>
     <li class="city-list-dayOfWeek" th:text="${dayOfWeek.get(2)}"></li>
     <br>
     <li class="city-list-date" th:text="${#temporals.format(day.plusDays(2),'dd.MM.yyyy')}"></li>
     <br>
-    <li class="city-list-icon" th:each="v : ${thirdDay}">
-        <div th:text="${v?.getDtTxt()}">
+    <li class="city-list-icon" th:each="v, stat : ${thirdDay.values()}">
+        <div th:if="${v}">
+            <div th:text="${#temporals.format(h.get(stat.index),'HH:mm')}"></div>
         </div>
+        <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
+            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${w.getIcon()})}">
+            <span th:text="${w.getDescription()}"></span>
+        </div>
+        <span th:text="${v.getDtTxt()}"></span>
+        <br>
     </li>
     <br>
     <li class="city-list-dayOfWeek" th:text="${dayOfWeek.get(3)}"></li>
     <br>
-    <li th:text="${#temporals.format(day.plusDays(3),'dd.MM.yyyy')}"></li>
-    <li class="city-list-icon" th:each="v : ${fourthDay}">
-            <span th:text="${v?.getDtTxt()}">
-                <span></span>
-            </span>
+    <li class="city-list-date" th:text="${#temporals.format(day.plusDays(3),'dd.MM.yyyy')}"></li>
+    <br>
+    <li class="city-list-icon" th:each="v, stat : ${fourthDay.values()}">
+        <div th:if="${v}">
+            <div th:text="${#temporals.format(h.get(stat.index),'HH:mm')}"></div>
+        </div>
+        <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
+            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${w.getIcon()})}">
+            <span th:text="${w.getDescription()}"></span>
+        </div>
+        <span th:text="${v.getDtTxt()}"></span>
+        <br>
     </li>
     <br>
     <li class="city-list-dayOfWeek" th:text="${dayOfWeek.get(4)}"></li>
     <br>
     <li class="city-list-date" th:text="${#temporals.format(day.plusDays(4),'dd.MM.yyyy')}"></li>
     <br>
-    <li class="city-list-icon" th:each="v : ${fifthDay}">
-            <span th:text="${v?.getDtTxt()}"></span>
+    <li class="city-list-icon" th:each="v, stat : ${fifthDay.values()}">
+        <div th:if="${v}">
+            <div th:text="${#temporals.format(h.get(stat.index),'HH:mm')}"></div>
+        </div>
+        <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
+            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${w.getIcon()})}">
+            <span th:text="${w.getDescription()}"></span>
+        </div>
+        <span th:text="${v.getDtTxt()}"></span>
+        <br>
     </li>
 </ul>
 

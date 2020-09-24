@@ -38,7 +38,7 @@ h1 {
 
 body {
     /*background-image: url("https://wallpapercave.com/wp/aZSazBV.jpg");*/
-    background-color: beige;
+    background-color: cadetblue;
     background-size: cover;
     margin: 0 auto;
     background-position: center;
@@ -71,13 +71,15 @@ li, p, h5{
     display: inline;
 }
 .city-list-icon{
-    color: aqua;
+    font-family: sans-serif;
+    color: blue;
 }
 .city-list-header{
     display: inline;
 }
-div{
+div, span{
     display: inline;
+    color: black;
 }
 .city-list-dayOfWeek{
     color: blueviolet;

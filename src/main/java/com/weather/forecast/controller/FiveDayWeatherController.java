@@ -31,10 +31,10 @@ public class FiveDayWeatherController {
         model.addAttribute("thirdDay",weatherService.getThirdDay(name));
         model.addAttribute("fourthDay",weatherService.getFourthDay(name));
         model.addAttribute("fifthDay",weatherService.getFifthDay(name));
-        model.addAttribute("dayOfWeek",weatherService.getDate(name));
+        model.addAttribute("dayOfWeek",weatherService.getDate());
         model.addAttribute("day", LocalDateTime.now());
-        model.addAttribute("epochDay",weatherService.toDateTime(name));
         model.addAttribute("hours",weatherService.getHours(name));
+        model.addAttribute("h",weatherService.toDateTime());
 
         return "Index";
     }

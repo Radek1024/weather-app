@@ -21,11 +21,10 @@ public class FiveDayWeatherService {
     }
 
     public Map<Integer,List> getFirstDay(String city) {
-        //List[] arr = new List[8];
         Map<Integer,List> map = new HashMap<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
-                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(3)).getDayOfWeek()
+                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
                             .equals(LocalDateTime.now().getDayOfWeek())) {
                         map.put(i,getForecast(city).getList()[i]);
                     }
@@ -33,78 +32,76 @@ public class FiveDayWeatherService {
         return map;
     }
 
-    public List[] getSecondDay(String city) {
-        List[] arr1 = new List[40];
+    public Map<Integer,List> getSecondDay(String city) {
+        Map<Integer,List> map = new HashMap<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
-                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(3)).getDayOfWeek()
+                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
                             .equals(LocalDateTime.now().getDayOfWeek().plus(1))) {
-                            arr1[i] = getForecast(city).getList()[i];
+                        map.put(i,getForecast(city).getList()[i]);
                     }
                 });
-        return arr1;
+        return map;
     }
 
-    public List[] getThirdDay(String city) {
-        List[] arr1 = new List[40];
+    public Map<Integer,List> getThirdDay(String city) {
+        Map<Integer,List> map = new HashMap<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
-                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(3)).getDayOfWeek()
+                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
                             .equals(LocalDateTime.now().getDayOfWeek().plus(2))) {
-                        arr1[i] = getForecast(city).getList()[i];
+                        map.put(i,getForecast(city).getList()[i]);
                     }
                 });
-        return arr1;
+        return map;
     }
 
-    public List[] getFourthDay(String city) {
-        List[] arr1 = new List[40];
+    public Map<Integer,List> getFourthDay(String city) {
+        Map<Integer,List> map = new HashMap<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
-                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(3)).getDayOfWeek()
+                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
                             .equals(LocalDateTime.now().getDayOfWeek().plus(3))) {
-                        arr1[i] = getForecast(city).getList()[i];
+                        map.put(i,getForecast(city).getList()[i]);
                     }
                 });
-        return arr1;
+        return map;
     }
 
-    public List[] getFifthDay(String city) {
-        List[] arr1 = new List[40];
+    public Map<Integer,List> getFifthDay(String city) {
+        Map<Integer,List> map = new HashMap<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
-                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(3)).getDayOfWeek()
+                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
                             .equals(LocalDateTime.now().getDayOfWeek().plus(4))) {
-                        arr1[i] = getForecast(city).getList()[i];
+                        map.put(i,getForecast(city).getList()[i]);
                     }
                 });
-        return arr1;
+        return map;
     }
 
-    public Map<Integer, DayOfWeek> getDate(String city) {
+    public Map<Integer, DayOfWeek> getDate() {
         Map<Integer, DayOfWeek> dateMap = new HashMap<>();
         IntStream.rangeClosed(0, 4)
                 .forEach(i -> dateMap.put(i, LocalDate.now().plusDays(i).getDayOfWeek()));
         return dateMap;
     }
 
-    public LocalDateTime[] toDateTime(String city){
-        LocalDateTime[] time = new LocalDateTime[40];
-        IntStream.rangeClosed(0,39)
-                .forEach(i->{
-                    time[i] = LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(),0,ZoneOffset.ofHours(2));
+    public ArrayList<LocalTime> toDateTime(){
+        ArrayList<LocalTime> list = new ArrayList<>();
+        IntStream.iterate(0,i -> i +3).limit(8)
+                .forEach(i ->{
+                    list.add(LocalTime.MIDNIGHT.plusHours(i));
                 });
-        return time;
+        return list;
     }
     public Map<Integer,LocalDateTime> getHours(String city){
-        Map<Integer,LocalDateTime> imgMap = new HashMap<>();
+        Map<Integer,LocalDateTime> hourMap = new HashMap<>();
         IntStream.rangeClosed(0,39)
                 .forEach(i-> {
-                   imgMap.put(i,LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(),0, ZoneOffset.ofHours(2)));
+                   hourMap.put(i,LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(),0, ZoneOffset.ofHours(0)));
                 });
-        //String url = " http://openweathermap.org/img/wn/{code}@2x.png";
-        //return restTemplate.getForObject(url,String.class,code);
-        return imgMap;
+        return hourMap;
     }
 
 }
