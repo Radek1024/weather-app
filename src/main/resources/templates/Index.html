@@ -11,8 +11,10 @@
 </head>
 <body>
 
+<div class="header" th:insert="Header"></div>
+
 <div class="cityName">
-    <h1>Weather for
+    <h1>pogoda dla
         <th:block th:text="${weather1.getCity().getName()}"></th:block>
     </h1>
 </div>
@@ -64,6 +66,7 @@
                     <span>m/s</span>
                 </li>
             </ul>
+
         <br>
     </li>
     <br>
@@ -207,7 +210,7 @@
                 <div th:text="${v?.getWind().getSpeed()}"></div>
                 <span>m/s</span>
             </li>
-        </ul>dek
+        </ul>
         <br>
     </li>
     <br>

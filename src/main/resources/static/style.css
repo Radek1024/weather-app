@@ -1,24 +1,32 @@
-.footer {
+.header.footer{
     padding: 20px;
     text-align: center;
-    background-color: rgba(189, 189, 189, 0.56);
+    background: dimgray;
     width: 100%;
-    bottom: 0;
+    position: fixed;
+}
+.header{
+    top: 0;
+}
+.footer {
     left: 0;
+    bottom: 0;
 }
 
 .cityName {
+    display: flex;
+    justify-content: center;
     font-family: sans-serif;
     font-weight: 300;
-    text-align: center;
     margin: 30px;
     padding: 20px;
 }
 
 body {
+    display: flex;
     background-color: cadetblue;
     background-size: cover;
-    margin: 0 auto;
+    margin-bottom: 100px;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -40,15 +48,18 @@ body {
 li, p, h5{
     display: inline;
 }
+
 div, div, span{
     display: inline;
     color: black;
 }
+
 .city-list{
     width: 70%;
     margin: auto;
     alignment: center;
 }
+
 .city-list-dayOfWeek {
     color: ghostwhite;
     font-weight: 600;
@@ -59,8 +70,13 @@ div, div, span{
     font-family: sans-serif;
     font-weight: 500;
 }
-.description, p{
+
+p{
     color: darkslategray;
+}
+
+.description{
+    color: black;
 }
 
 .city-list-hour{
@@ -69,4 +85,8 @@ div, div, span{
     font-family: sans-serif;
 }
 
+.inner-list{
+    display: inline;
+    position: relative;
+}
 
