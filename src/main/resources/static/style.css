@@ -1,43 +1,21 @@
-.header {
-    /*background-image: url("http://l-zone.info/wpcms/wp-content/uploads/2014/01/header_weather.jpg");*/
-    background-color: azure;
-    background-size: cover ;
-    background-position: center;
-    text-align: center;
-    padding: 50px;
-    top: 0;
-}
-
 .footer {
-    padding: 27px;
+    padding: 20px;
     text-align: center;
     background-color: rgba(189, 189, 189, 0.56);
-    position: fixed;
     width: 100%;
     bottom: 0;
     left: 0;
 }
 
 .cityName {
+    font-family: sans-serif;
+    font-weight: 300;
     text-align: center;
     margin: 30px;
-}
-
-.temperature {
-    text-align: center;
     padding: 20px;
 }
 
-h1 {
-    margin-top: 110px;
-    text-align: center;
-    color: black;
-    font-family: Ubuntu, sans-serif;
-    font-size: 3.5em;
-}
-
 body {
-    /*background-image: url("https://wallpapercave.com/wp/aZSazBV.jpg");*/
     background-color: cadetblue;
     background-size: cover;
     margin: 0 auto;
@@ -50,41 +28,45 @@ body {
     text-align: center;
     color: black;
     margin-top: 80px;
-
 }
 
-.weatherDescription{
-    text-align: center;
-    padding: 20px;
-}
 .button{
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.pressure{
-    text-align: center;
-}
 
 li, p, h5{
     display: inline;
 }
-.city-list-icon{
-    font-family: sans-serif;
-    color: blue;
-}
-.city-list-header{
-    display: inline;
-}
-div, span{
+div, div, span{
     display: inline;
     color: black;
 }
-.city-list-dayOfWeek{
-    color: blueviolet;
-    font-size: 25px;
+.city-list{
+    width: 70%;
+    margin: auto;
+    alignment: center;
 }
+.city-list-dayOfWeek {
+    color: ghostwhite;
+    font-weight: 600;
+    font-size: 40px;
+    font-family: sans-serif;
+}
+.city-list-date{
+    font-family: sans-serif;
+    font-weight: 500;
+}
+.description, p{
+    color: darkslategray;
+}
+
 .city-list-hour{
-    display: inline;
+    color: black;
+    font-weight: 500;
+    font-family: sans-serif;
 }
+
+

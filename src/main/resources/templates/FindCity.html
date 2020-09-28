@@ -12,7 +12,7 @@
 <body>
 
 <div class="searchMenu">
-    <h1>wyszukaj miasto</h1>
+    <h1>Find city</h1>
     <form th:action="@{/weatherResult}" th:object="${cityObject}" method="post">
         <input type="text" th:field="*{name}" placeholder="miasto"><br><br>
         <input type="submit" value="search">
