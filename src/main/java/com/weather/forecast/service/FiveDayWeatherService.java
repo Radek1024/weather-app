@@ -17,7 +17,7 @@ public class FiveDayWeatherService {
     private final RestTemplate restTemplate;
 
     public FiveDayForecast getForecast(String city) {
-        String weatherId = "";
+        String weatherId = "3070856697cde0dd9224dc1445904678";
         String url = "https://api.openweathermap.org/data/2.5/forecast?q={city}&units=metric&appid={weatherId}&lang=pl";
         ResponseEntity<FiveDayForecast> request = restTemplate.getForEntity(url, FiveDayForecast.class, city, weatherId);
         if (request.getStatusCode() == HttpStatus.OK){

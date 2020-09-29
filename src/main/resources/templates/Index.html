@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -7,11 +7,14 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/Footer.html}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/Header.html}"/>
     <title>Pogoda</title>
 </head>
 <body>
 
+
 <div class="header" th:insert="Header"></div>
+
 
 <div class="cityName">
     <h1>pogoda dla
@@ -33,39 +36,39 @@
             <div class="description" th:text="${w.getDescription()}"></div>
         </div>
 
-            <ul class="inner-list">
-                <li class="city-list-temp">
-                    <p>temperatura</p>
-                    <div th:text="${v?.getMain()?.getTemperature()}"></div>
-                    <span>&degC</span>
-                </li>
-                <li class="city-list-pressure">
-                    <p>ciśnienie</p>
-                    <div th:text="${v?.getMain()?.getPressure()}"></div>
-                    <span>HPa</span>
-                </li>
-                <li class="city-list-humidity" >
-                    <p>wilgotność</p>
-                    <div th:text="${v?.getMain().getHumidity()}"></div>
-                    <span>%</span>
-                </li>
+        <ul class="inner-list">
+            <li class="city-list-temp">
+                <p>temperatura</p>
+                <div th:text="${v?.getMain()?.getTemperature()}"></div>
+                <span>&degC</span>
+            </li>
+            <li class="city-list-pressure">
+                <p>ciśnienie</p>
+                <div th:text="${v?.getMain()?.getPressure()}"></div>
+                <span>HPa</span>
+            </li>
+            <li class="city-list-humidity">
+                <p>wilgotność</p>
+                <div th:text="${v?.getMain().getHumidity()}"></div>
+                <span>%</span>
+            </li>
             <br>
-                <li class="city-list-rain">
-                    <p>deszcz</p>
-                    <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
-                    <span>mm</span>
-                </li>
-                <li class="city-list-clouds">
-                    <p>zachmurzenie</p>
-                    <div th:text="${v?.getClouds().getAll()}"></div>
-                    <span>%</span>
-                </li>
-                <li class="city-list-wind" >
-                    <p>wiatr</p>
-                    <div th:text="${v?.getWind().getSpeed()}"></div>
-                    <span>m/s</span>
-                </li>
-            </ul>
+            <li class="city-list-rain">
+                <p>deszcz</p>
+                <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
+                <span>mm</span>
+            </li>
+            <li class="city-list-clouds">
+                <p>zachmurzenie</p>
+                <div th:text="${v?.getClouds().getAll()}"></div>
+                <span>%</span>
+            </li>
+            <li class="city-list-wind">
+                <p>wiatr</p>
+                <div th:text="${v?.getWind().getSpeed()}"></div>
+                <span>m/s</span>
+            </li>
+        </ul>
 
         <br>
     </li>
@@ -93,7 +96,7 @@
                 <div th:text="${v?.getMain()?.getPressure()}"></div>
                 <span>HPa</span>
             </li>
-            <li class="city-list-humidity" >
+            <li class="city-list-humidity">
                 <p>wilgotność</p>
                 <div th:text="${v?.getMain().getHumidity()}"></div>
                 <span>%</span>
@@ -101,7 +104,7 @@
             <br>
             <li class="city-list-rain">
                 <p>deszcz</p>
-                <div th:text="${v?.getRain()?.getRainThreeHours()}"></div>
+                <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
                 <span>mm</span>
             </li>
             <li class="city-list-clouds">
@@ -109,7 +112,7 @@
                 <div th:text="${v?.getClouds().getAll()}"></div>
                 <span>%</span>
             </li>
-            <li class="city-list-wind" >
+            <li class="city-list-wind">
                 <p>wiatr</p>
                 <div th:text="${v?.getWind().getSpeed()}"></div>
                 <span>m/s</span>
@@ -141,7 +144,7 @@
                 <div th:text="${v?.getMain()?.getPressure()}"></div>
                 <span>HPa</span>
             </li>
-            <li class="city-list-humidity" >
+            <li class="city-list-humidity">
                 <p>wilgotność</p>
                 <div th:text="${v?.getMain().getHumidity()}"></div>
                 <span>%</span>
@@ -149,7 +152,7 @@
             <br>
             <li class="city-list-rain">
                 <p>deszcz</p>
-                <div th:text="${v?.getRain()?.getRainThreeHours()}"></div>
+                <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
                 <span>mm</span>
             </li>
             <li class="city-list-clouds">
@@ -157,7 +160,7 @@
                 <div th:text="${v?.getClouds().getAll()}"></div>
                 <span>%</span>
             </li>
-            <li class="city-list-wind" >
+            <li class="city-list-wind">
                 <p>wiatr</p>
                 <div th:text="${v?.getWind().getSpeed()}"></div>
                 <span>m/s</span>
@@ -189,7 +192,7 @@
                 <div th:text="${v?.getMain()?.getPressure()}"></div>
                 <span>HPa</span>
             </li>
-            <li class="city-list-humidity" >
+            <li class="city-list-humidity">
                 <p>wilgotność</p>
                 <div th:text="${v?.getMain().getHumidity()}"></div>
                 <span>%</span>
@@ -197,7 +200,7 @@
             <br>
             <li class="city-list-rain">
                 <p>deszcz</p>
-                <div th:text="${v?.getRain()?.getRainThreeHours()}"></div>
+                <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
                 <span>mm</span>
             </li>
             <li class="city-list-clouds">
@@ -205,7 +208,7 @@
                 <div th:text="${v?.getClouds().getAll()}"></div>
                 <span>%</span>
             </li>
-            <li class="city-list-wind" >
+            <li class="city-list-wind">
                 <p>wiatr</p>
                 <div th:text="${v?.getWind().getSpeed()}"></div>
                 <span>m/s</span>
@@ -237,7 +240,7 @@
                 <div th:text="${v?.getMain()?.getPressure()}"></div>
                 <span>HPa</span>
             </li>
-            <li class="city-list-humidity" >
+            <li class="city-list-humidity">
                 <p>wilgotność</p>
                 <div th:text="${v?.getMain().getHumidity()}"></div>
                 <span>%</span>
@@ -245,7 +248,7 @@
             <br>
             <li class="city-list-rain">
                 <p>deszcz</p>
-                <div th:text="${v?.getRain()?.getRainThreeHours()}"></div>
+                <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
                 <span>mm</span>
             </li>
             <li class="city-list-clouds">
@@ -253,7 +256,7 @@
                 <div th:text="${v?.getClouds().getAll()}"></div>
                 <span>%</span>
             </li>
-            <li class="city-list-wind" >
+            <li class="city-list-wind">
                 <p>wiatr</p>
                 <div th:text="${v?.getWind().getSpeed()}"></div>
                 <span>m/s</span>
