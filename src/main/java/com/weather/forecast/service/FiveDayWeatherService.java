@@ -30,9 +30,9 @@ public class FiveDayWeatherService {
         ArrayList<List> list = new ArrayList<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
-                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
+                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
                             .equals(LocalDateTime.now().getDayOfWeek())) {
-                        list.add(getForecast(city).getList()[i]);
+                        list.add(getForecast(city).getList().get(i));
                     }
                 });
         return list;
@@ -42,9 +42,9 @@ public class FiveDayWeatherService {
         ArrayList<List> list = new ArrayList<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
-                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
+                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
                             .equals(LocalDateTime.now().getDayOfWeek().plus(1))) {
-                        list.add(getForecast(city).getList()[i]);
+                        list.add(getForecast(city).getList().get(i));
                     }
                 });
         return list;
@@ -54,9 +54,9 @@ public class FiveDayWeatherService {
         ArrayList<List> list = new ArrayList<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
-                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
+                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
                             .equals(LocalDateTime.now().getDayOfWeek().plus(2))) {
-                        list.add(getForecast(city).getList()[i]);
+                        list.add(getForecast(city).getList().get(i));
                     }
                 });
         return list;
@@ -66,9 +66,9 @@ public class FiveDayWeatherService {
         ArrayList<List> list = new ArrayList<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
-                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
+                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
                             .equals(LocalDateTime.now().getDayOfWeek().plus(3))) {
-                        list.add(getForecast(city).getList()[i]);
+                        list.add(getForecast(city).getList().get(i));
                     }
                 });
         return list;
@@ -78,9 +78,9 @@ public class FiveDayWeatherService {
         ArrayList<List> list = new ArrayList<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
-                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
+                    if (LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
                             .equals(LocalDateTime.now().getDayOfWeek().plus(4))) {
-                        list.add(getForecast(city).getList()[i]);
+                        list.add(getForecast(city).getList().get(i));
                     }
                 });
         return list;
@@ -95,7 +95,7 @@ public class FiveDayWeatherService {
 
     public ArrayList<LocalTime> toDateTime(){
         ArrayList<LocalTime> list = new ArrayList<>();
-        IntStream.iterate(0,i -> i +3).limit(8)
+        IntStream.iterate(0,i -> i + 3).limit(8)
                 .forEach(i ->{
                     list.add(LocalTime.MIDNIGHT.plusHours(i));
                 });
@@ -106,7 +106,7 @@ public class FiveDayWeatherService {
         Map<Integer,LocalDateTime> hourMap = new HashMap<>();
         IntStream.rangeClosed(0,39)
                 .forEach(i-> {
-                   hourMap.put(i,LocalDateTime.ofEpochSecond(getForecast(city).getList()[i].getDt(),0, ZoneOffset.ofHours(0)));
+                   hourMap.put(i,LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(),0, ZoneOffset.ofHours(0)));
                 });
         return hourMap;
     }

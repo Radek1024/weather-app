@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 
 @NoArgsConstructor
@@ -20,5 +21,5 @@ public class FiveDayForecast {
     private double message;
     private City city;
     private int cnt;
-    private List[] list;
+    private ArrayList<List> list;
 }
