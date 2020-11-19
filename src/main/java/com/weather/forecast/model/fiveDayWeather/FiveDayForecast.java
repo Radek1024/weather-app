@@ -21,5 +21,5 @@ public class FiveDayForecast {
     private double message;
     private City city;
     private int cnt;
-    private ArrayList<List> list;
+    private java.util.List<List> list;
 }

@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import java.time.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 @Service
@@ -26,8 +28,8 @@ public class FiveDayWeatherService {
         return null;
     }
 
-    public ArrayList<List> getFirstDay(String city) {
-        ArrayList<List> list = new ArrayList<>();
+    public java.util.List<List> getFirstDay(String city) {
+        java.util.List<List> list = new ArrayList<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
                     if (LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
@@ -38,8 +40,8 @@ public class FiveDayWeatherService {
         return list;
     }
 
-    public ArrayList<List> getSecondDay(String city) {
-        ArrayList<List> list = new ArrayList<>();
+    public java.util.List<List> getSecondDay(String city) {
+        java.util.List<List> list = new ArrayList<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
                     if (LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
@@ -50,8 +52,8 @@ public class FiveDayWeatherService {
         return list;
     }
 
-    public ArrayList<List> getThirdDay(String city) {
-        ArrayList<List> list = new ArrayList<>();
+    public java.util.List<List> getThirdDay(String city) {
+        java.util.List<List> list = new ArrayList<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
                     if (LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
@@ -62,8 +64,8 @@ public class FiveDayWeatherService {
         return list;
     }
 
-    public ArrayList<List> getFourthDay(String city) {
-        ArrayList<List> list = new ArrayList<>();
+    public java.util.List<List> getFourthDay(String city) {
+        java.util.List<List> list = new ArrayList<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
                     if (LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
@@ -74,8 +76,8 @@ public class FiveDayWeatherService {
         return list;
     }
 
-    public ArrayList<List> getFifthDay(String city) {
-        ArrayList<List> list = new ArrayList<>();
+    public java.util.List<List> getFifthDay(String city) {
+        java.util.List<List> list = new ArrayList<>();
         IntStream.rangeClosed(0, 39)
                 .forEach(i -> {
                     if (LocalDateTime.ofEpochSecond(getForecast(city).getList().get(i).getDt(), 0, ZoneOffset.ofHours(0)).getDayOfWeek()
@@ -93,8 +95,8 @@ public class FiveDayWeatherService {
         return dateMap;
     }
 
-    public ArrayList<LocalTime> toDateTime(){
-        ArrayList<LocalTime> list = new ArrayList<>();
+    public java.util.List<LocalTime> toDateTime(){
+        java.util.List<LocalTime> list = new ArrayList<>();
         IntStream.iterate(0,i -> i + 3).limit(8)
                 .forEach(i ->{
                     list.add(LocalTime.MIDNIGHT.plusHours(i));
