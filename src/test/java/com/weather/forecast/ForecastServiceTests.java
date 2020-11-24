@@ -10,11 +10,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-
-import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -22,10 +21,12 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class ForecastServiceTests {
     private FiveDayWeatherService fiveDayWeather;
+    private List list;
 
     @BeforeEach
     public void init(){
         fiveDayWeather = mock(FiveDayWeatherService.class);
+        list = mock(List.class);
     }
 
     @Test
@@ -54,8 +55,7 @@ public class ForecastServiceTests {
     @Test
     public void getFirstDayTest(){
         String city = "Sydney";
-        long time = 1605782108;
-        long time1= 1605793457;
+        long time = 1605787184;
 
         Clouds clouds = new Clouds();
         clouds.setAll(100);
@@ -73,7 +73,7 @@ public class ForecastServiceTests {
         list.setRain(rain);
         list.setClouds(clouds);
         List list1 = new List();
-        list1.setDt(time1);
+        list1.setDt(time);
         list1.setRain(rain1);
         list1.setClouds(clouds1);
 
@@ -83,12 +83,53 @@ public class ForecastServiceTests {
         when(fiveDayWeather.getFirstDay(city)).thenReturn(listOfList);
 
         assertNotNull(listOfList);
-        assertEquals(1605782108,listOfList.get(0).getDt());
-        assertEquals(1605793457,listOfList.get(1).getDt());
+        assertEquals(1605787184,listOfList.get(0).getDt());
+        assertEquals(1605787184,listOfList.get(1).getDt());
         assertEquals(2,listOfList.size());
         assertEquals(100,listOfList.get(0).getClouds().getAll());
         assertEquals(80,listOfList.get(0).getRain().getRainOneHour());
         assertEquals(33,listOfList.get(1).getClouds().getAll());
         assertEquals(75,listOfList.get(1).getRain().getRainOneHour());
+    }
+    @Test
+    public void getSecondDayTest(){
+        String city = "Sydney";
+        long day = 1605787184;
+        long dayPlusOne = LocalDateTime.ofEpochSecond(day,0, ZoneOffset.ofHours(0)).plusDays(1).toEpochSecond(ZoneOffset.ofHours(0));
+
+        Clouds clouds = new Clouds();
+        clouds.setAll(50);
+        Clouds clouds1 = new Clouds();
+        clouds1.setAll(75);
+        Rain rain = new Rain();
+        rain.setRainOneHour(0);
+        rain.setRainThreeHours(0);
+        Rain rain1 = new Rain();
+        rain1.setRainOneHour(10);
+        rain1.setRainThreeHours(10);
+
+        List list = new List();
+        list.setDt(dayPlusOne);
+        list.setRain(rain);
+        list.setClouds(clouds);
+        List list1 = new List();
+        list1.setDt(dayPlusOne);
+        list1.setRain(rain1);
+        list1.setClouds(clouds1);
+
+        java.util.List<List> listOfList = new ArrayList<>();
+        Collections.addAll(listOfList,list,list1);
+
+        when(fiveDayWeather.getSecondDay(city)).thenReturn(listOfList);
+
+        assertNotNull(listOfList);
+        assertEquals(50,listOfList.get(0).getClouds().getAll());
+        assertEquals(75,listOfList.get(1).getClouds().getAll());
+        assertEquals(0,listOfList.get(0).getRain().getRainOneHour());
+        assertEquals(0,listOfList.get(0).getRain().getRainThreeHours());
+        assertEquals(10,listOfList.get(1).getRain().getRainOneHour());
+        assertEquals(10,listOfList.get(1).getRain().getRainThreeHours());
+        assertNotEquals(day,listOfList.get(0).getDt());
+        assertNotEquals(day,listOfList.get(1).getDt());
     }
 }
