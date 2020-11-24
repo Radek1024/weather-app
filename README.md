@@ -5,3 +5,5 @@ weather application displaying current weather or five day forecast for given ci
 *consuming apis using rest template.
 
 *form handling and decision making in thymeleaf.
+
+*mockito testing
