@@ -14,7 +14,7 @@ public class CurrentWeatherService {
     public CurrentWeather getData(String city){
         String appId = "3070856697cde0dd9224dc1445904678";
         String url = "https://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&appid={currentWeatherId}&lang=pl";
-        return restTemplate.getForObject(url, CurrentWeather.class,city,appId);
+        return restTemplate.getForObject(url, CurrentWeather.class, city, appId);
     }
 
 }

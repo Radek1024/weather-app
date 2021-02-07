@@ -53,8 +53,7 @@ public class ForecastServiceTests {
     }
 
     @Test
-    public void getFirstDayTest(){
-        String city = "Sydney";
+    public void get_First_Day_Test(){
         long time = 1605787184;
 
         Clouds clouds = new Clouds();
@@ -80,7 +79,7 @@ public class ForecastServiceTests {
         java.util.List<List> listOfList = new ArrayList<>();
         Collections.addAll(listOfList,list,list1);
 
-        when(fiveDayWeather.getFirstDay(city)).thenReturn(listOfList);
+        when(fiveDayWeather.getFirstDay()).thenReturn(listOfList);
 
         assertNotNull(listOfList);
         assertEquals(1605787184,listOfList.get(0).getDt());
@@ -92,8 +91,7 @@ public class ForecastServiceTests {
         assertEquals(75,listOfList.get(1).getRain().getRainOneHour());
     }
     @Test
-    public void getSecondDayTest(){
-        String city = "Sydney";
+    public void get_Second_Day_Test(){
         long day = 1605787184;
         long dayPlusOne = LocalDateTime.ofEpochSecond(day,0, ZoneOffset.ofHours(0)).plusDays(1).toEpochSecond(ZoneOffset.ofHours(0));
 
@@ -120,7 +118,7 @@ public class ForecastServiceTests {
         java.util.List<List> listOfList = new ArrayList<>();
         Collections.addAll(listOfList,list,list1);
 
-        when(fiveDayWeather.getSecondDay(city)).thenReturn(listOfList);
+        when(fiveDayWeather.getSecondDay()).thenReturn(listOfList);
 
         assertNotNull(listOfList);
         assertEquals(50,listOfList.get(0).getClouds().getAll());

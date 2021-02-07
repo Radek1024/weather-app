@@ -26,14 +26,14 @@ public class FiveDayWeatherController {
     @PostMapping("/weatherResult")
     public String getFiveForecast(String name, Model model) {
         model.addAttribute("weather1",weatherService.getForecast(name));
-        model.addAttribute("firstDay",weatherService.getFirstDay(name));
-        model.addAttribute("secondDay",weatherService.getSecondDay(name));
-        model.addAttribute("thirdDay",weatherService.getThirdDay(name));
-        model.addAttribute("fourthDay",weatherService.getFourthDay(name));
-        model.addAttribute("fifthDay",weatherService.getFifthDay(name));
+        model.addAttribute("firstDay",weatherService.getFirstDay());
+        model.addAttribute("secondDay",weatherService.getSecondDay());
+        model.addAttribute("thirdDay",weatherService.getThirdDay());
+        model.addAttribute("fourthDay",weatherService.getFourthDay());
+        model.addAttribute("fifthDay",weatherService.getFifthDay());
         model.addAttribute("dayOfWeek",weatherService.getDate());
         model.addAttribute("day", LocalDateTime.now());
-        model.addAttribute("hours",weatherService.getHours(name));
+        model.addAttribute("hours",weatherService.getHours());
         model.addAttribute("h",weatherService.toDateTime());
 
         return "Index";

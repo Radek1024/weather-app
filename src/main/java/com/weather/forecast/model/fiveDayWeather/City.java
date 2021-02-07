@@ -11,7 +11,6 @@ import java.util.Map;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class City {
-
     private int id;
     private String name;
     private String country;
