@@ -17,12 +17,12 @@ import java.util.stream.IntStream;
 @RequiredArgsConstructor
 public class FiveDayWeatherService {
     private final RestTemplate restTemplate;
-    ResponseEntity<FiveDayForecast> request;
+    private ResponseEntity<FiveDayForecast> request;
 
     public FiveDayForecast getForecast(String cityName) {
         String weatherId = "3070856697cde0dd9224dc1445904678";
         String url = "https://api.openweathermap.org/data/2.5/forecast?q={city}&units=metric&appid={weatherId}&lang=pl";
-        /*ResponseEntity<FiveDayForecast>*/ request = restTemplate.getForEntity(url, FiveDayForecast.class, cityName, weatherId);
+        request = restTemplate.getForEntity(url, FiveDayForecast.class, cityName, weatherId);
         if (request.getStatusCode() == HttpStatus.OK){
             return request.getBody();
         }
