@@ -19,7 +19,7 @@ public class CurrentWeatherController {
         return "FindCity";
     }
 
-    @GetMapping("/result")
+    @GetMapping("/currentDayWeatherResult")
     public String getApi(String cityName, Model model){
         model.addAttribute("weather",currentWeatherService.getData(cityName));
         return "Result";

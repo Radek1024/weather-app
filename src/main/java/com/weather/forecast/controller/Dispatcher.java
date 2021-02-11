@@ -22,11 +22,11 @@ public class Dispatcher {
         if(city.getId()==2) {
             session.setAttribute("objName",city.getName());
             model.addAttribute("name",session);
-            return "redirect:/weatherResult";
+            return "redirect:/fiveDayWeatherResult";
         }
         if(city.getId()==1) {
             model.addAttribute("id", city.getId());
-            return "redirect:/result";
+            return "redirect:/currentDayWeatherResult";
         }
         return "Welcome";
     }

@@ -23,7 +23,7 @@ public class FiveDayWeatherController {
         return "FindCity";
     }*/
 
-    @GetMapping("/weatherResult")
+    @GetMapping("/fiveDayWeatherResult")
     public String getFiveForecast(HttpSession session, Model model) {
 
         model.addAttribute("weather1", weatherService.getForecast(Objects.requireNonNullElse(session.getAttribute("objName").toString(), "Buenos Aires")));
