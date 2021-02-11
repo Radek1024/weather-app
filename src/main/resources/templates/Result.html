@@ -8,13 +8,12 @@
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/Footer.html}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/Header.html}"/>
+
     <title>Pogoda</title>
 </head>
 <body>
 
-
 <div class="header" th:insert="Header"></div>
-
 
 <div class="cityName">
     <h1>pogoda dla <th:block th:text="${weather1.getCity().getName()}"></th:block>
@@ -265,9 +264,7 @@
     </li>
 </ul>
 
-<form class="button" th:action="@{/}" method="post">
-    <button type="submit">wyszukaj ponownie</button>
-</form>
+
 
 <div class="footer" th:insert="Footer"></div>
 

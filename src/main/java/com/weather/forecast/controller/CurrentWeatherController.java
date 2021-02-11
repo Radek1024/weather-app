@@ -19,10 +19,10 @@ public class CurrentWeatherController {
         return "FindCity";
     }
 
-    @PostMapping("/result")
+    @GetMapping("/result")
     public String getApi(String cityName, Model model){
         model.addAttribute("weather",currentWeatherService.getData(cityName));
-        return "Index";
+        return "Result";
     }
 
 

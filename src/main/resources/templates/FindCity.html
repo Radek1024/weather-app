@@ -8,20 +8,19 @@
     <link rel="stylesheet" type="text/css" th:href="@{/Footer.html}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/Header.html}"/>
     <title>Znajdź miasto</title>
-
 </head>
 <body>
-<div class="header" th:insert="Header"></div>
+<!--<header class="header" th:insert="Header"></header>-->
 
 <div class="searchMenu">
-    <h1>Find city</h1>
+    <h1>szukaj miasta</h1>
     <form th:action="@{/weatherResult}" th:object="${cityObject}" method="post">
-        <input type="text" th:field="*{name}" placeholder="miasto"><br><br>
-        <input type="submit" value="search">
+        <input type="text" th:field="*{name}" placeholder="podaj miasto"><br><br>
+        <input type="submit" value="szukaj">
     </form>
 </div>
 
-<div class="footer" th:insert="Footer"></div>
+<!--<div class="footer" th:insert="Footer"></div>-->
 
 </body>
 </html>

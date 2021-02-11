@@ -1,42 +1,43 @@
 package com.weather.forecast.controller;
 
+import com.weather.forecast.model.currentWeather.CurrentWeather;
 import com.weather.forecast.model.fiveDayWeather.City;
-import com.weather.forecast.model.fiveDayWeather.FiveDayForecast;
 import com.weather.forecast.service.FiveDayWeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
 public class FiveDayWeatherController {
     private final FiveDayWeatherService weatherService;
 
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     public String getIndex(Model model) {
         model.addAttribute("cityObject", new City());
         return "FindCity";
-    }
+    }*/
 
-    @PostMapping("/weatherResult")
-    public String getFiveForecast(String name, Model model) {
-        model.addAttribute("weather1",weatherService.getForecast(name));
-        model.addAttribute("firstDay",weatherService.getFirstDay());
-        model.addAttribute("secondDay",weatherService.getSecondDay());
-        model.addAttribute("thirdDay",weatherService.getThirdDay());
-        model.addAttribute("fourthDay",weatherService.getFourthDay());
-        model.addAttribute("fifthDay",weatherService.getFifthDay());
-        model.addAttribute("dayOfWeek",weatherService.getDate());
+    @GetMapping("/weatherResult")
+    public String getFiveForecast(HttpSession session, Model model) {
+
+        model.addAttribute("weather1", weatherService.getForecast(Objects.requireNonNullElse(session.getAttribute("objName").toString(), "Buenos Aires")));
+        model.addAttribute("firstDay", weatherService.getFirstDay());
+        model.addAttribute("secondDay", weatherService.getSecondDay());
+        model.addAttribute("thirdDay", weatherService.getThirdDay());
+        model.addAttribute("fourthDay", weatherService.getFourthDay());
+        model.addAttribute("fifthDay", weatherService.getFifthDay());
+        model.addAttribute("dayOfWeek", weatherService.getDate());
         model.addAttribute("day", LocalDateTime.now());
-        model.addAttribute("hours",weatherService.getHours());
-        model.addAttribute("h",weatherService.toDateTime());
+        model.addAttribute("hours", weatherService.getHours());
+        model.addAttribute("h", weatherService.toDateTime());
 
-        return "Index";
+        return "Result";
     }
 
 }
