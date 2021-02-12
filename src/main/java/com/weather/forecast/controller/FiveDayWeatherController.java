@@ -1,7 +1,5 @@
 package com.weather.forecast.controller;
 
-import com.weather.forecast.model.currentWeather.CurrentWeather;
-import com.weather.forecast.model.fiveDayWeather.City;
 import com.weather.forecast.service.FiveDayWeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,16 +15,10 @@ import java.util.Objects;
 public class FiveDayWeatherController {
     private final FiveDayWeatherService weatherService;
 
-    /*@RequestMapping("/")
-    public String getIndex(Model model) {
-        model.addAttribute("cityObject", new City());
-        return "FindCity";
-    }*/
+    @PostMapping("/fiveDayWeatherResult")
+    public String getFiveForecast(String cityName, Model model) {
 
-    @GetMapping("/fiveDayWeatherResult")
-    public String getFiveForecast(HttpSession session, Model model) {
-
-        model.addAttribute("weather1", weatherService.getForecast(Objects.requireNonNullElse(session.getAttribute("objName").toString(), "Buenos Aires")));
+        model.addAttribute("weather1", weatherService.getForecast(cityName));
         model.addAttribute("firstDay", weatherService.getFirstDay());
         model.addAttribute("secondDay", weatherService.getSecondDay());
         model.addAttribute("thirdDay", weatherService.getThirdDay());

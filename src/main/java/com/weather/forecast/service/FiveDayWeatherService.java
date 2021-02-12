@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import javax.servlet.http.HttpSession;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.HashMap;

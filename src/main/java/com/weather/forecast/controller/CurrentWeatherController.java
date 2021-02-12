@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequiredArgsConstructor
 public class CurrentWeatherController {
@@ -18,12 +20,10 @@ public class CurrentWeatherController {
         model.addAttribute("currentWeather", currentWeather);
         return "FindCity";
     }
-
     @GetMapping("/currentDayWeatherResult")
-    public String getApi(String cityName, Model model){
-        model.addAttribute("weather",currentWeatherService.getData(cityName));
-        return "Result";
+    public String getApi(HttpSession session, Model model){
+        model.addAttribute("weather",currentWeatherService.getData(session.getAttribute("objName").toString()));
+        return "Footer";
     }
-
 
 }

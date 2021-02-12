@@ -10,6 +10,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockHttpSession;
+
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
@@ -42,14 +45,12 @@ public class ForecastServiceTests {
         fiveDayForecast.setMessage(11.5);
         fiveDayForecast.setList(Collections.singletonList(list));
 
-        FiveDayForecast response = ResponseEntity.ok(fiveDayForecast).getBody();
+        when(fiveDayWeather.getForecast(city.getName())).thenReturn(fiveDayForecast);
 
-        when(fiveDayWeather.getForecast(city.getName())).thenReturn(response);
-
-        assertNotNull(response);
-        assertEquals("Perth",response.getCity().getName());
-        assertEquals(1605782108,response.getList().get(0).getDt());
-        assertEquals(11.5,response.getMessage());
+        assertNotNull(fiveDayForecast);
+        assertEquals("Perth",fiveDayForecast.getCity().getName());
+        assertEquals(1605782108,fiveDayForecast.getList().get(0).getDt());
+        assertEquals(11.5,fiveDayForecast.getMessage());
     }
 
     @Test
