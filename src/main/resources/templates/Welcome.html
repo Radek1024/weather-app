@@ -9,9 +9,9 @@
 
 <div class="welcome_page">
     <form th:action="@{/decision}" th:object="${cityObject}" method="post">
-        <input type="text" placeholder="podaj miasto" th:field="${cityObject.name}" required>
+        <input class="input" type="text" placeholder="podaj miasto" th:field="${cityObject.name}" required>
         <br>
-        <input type="radio" id="one" value="1" th:field="${cityObject.id}">
+        <input  type="radio" id="one" value="1" th:field="${cityObject.id}" required>
         <label for="one">jednodniowa</label>
         <input type="radio" id="two" value="2" th:field="${cityObject.id}">
         <label for="two">pięcio dniowa</label>

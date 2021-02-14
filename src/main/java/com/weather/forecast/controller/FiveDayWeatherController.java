@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
@@ -16,9 +17,9 @@ public class FiveDayWeatherController {
     private final FiveDayWeatherService weatherService;
 
     @PostMapping("/fiveDayWeatherResult")
-    public String getFiveForecast(String cityName, Model model) {
+    public String getFiveForecast(Model model, HttpSession session) {
 
-        model.addAttribute("weather1", weatherService.getForecast(cityName));
+        model.addAttribute("weather1", weatherService.getForecast(session.getAttribute("cityName").toString()));
         model.addAttribute("firstDay", weatherService.getFirstDay());
         model.addAttribute("secondDay", weatherService.getSecondDay());
         model.addAttribute("thirdDay", weatherService.getThirdDay());

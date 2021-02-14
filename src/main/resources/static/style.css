@@ -20,16 +20,19 @@
     left: 0;
 }
 body {
-    border: 2px solid red;
     background-color: #f1f1f1;
     margin-top: 150px;
     margin-bottom: 50px;
     padding-top: 20px;
     padding-bottom: 50px;
 }
-.welcome_page{
-    text-align: center;
-    border-top: 200px;
+.welcome_page {
+    /*text-align: center;*/
+    background-color: #f1f1f1;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    padding-top: 20px;
+    padding-bottom: 50px;
 }
 .cityName {
     display: flex;

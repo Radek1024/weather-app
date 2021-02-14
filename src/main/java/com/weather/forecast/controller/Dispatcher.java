@@ -18,14 +18,14 @@ public class Dispatcher {
         return "Welcome";
     }
     @PostMapping("/decision")
-    public String decide(City city, Model model){
+    public String decide(City city, HttpSession session){
+        session.setAttribute("cityName",city.getName());
         if(city.getId()==2) {
-            model.addAttribute("name",city.getName());
             return "forward:/fiveDayWeatherResult";
         }
         if(city.getId()==1) {
-            model.addAttribute("id", city.getId());
-            return "redirect:/currentDayWeatherResult";
+            //model.addAttribute("cityName", city.getId());
+            return "forward:/currentDayWeatherResult";
         }
         else
             return "Welcome";

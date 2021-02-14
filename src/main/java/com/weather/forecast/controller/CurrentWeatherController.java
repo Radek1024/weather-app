@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -14,15 +15,9 @@ import javax.servlet.http.HttpSession;
 public class CurrentWeatherController {
     private final CurrentWeatherService currentWeatherService;
 
-    @RequestMapping("/api")
-    public String getIndex(Model model){
-        CurrentWeather currentWeather = new CurrentWeather();
-        model.addAttribute("currentWeather", currentWeather);
-        return "FindCity";
-    }
-    @GetMapping("/currentDayWeatherResult")
+    @PostMapping("/currentDayWeatherResult")
     public String getApi(HttpSession session, Model model){
-        model.addAttribute("weather",currentWeatherService.getData(session.getAttribute("objName").toString()));
+        model.addAttribute("weather",currentWeatherService.getData(session.getAttribute("cityName").toString()));
         return "Footer";
     }
 
