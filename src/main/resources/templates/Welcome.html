@@ -6,7 +6,7 @@
     <title>Welcome</title>
 </head>
 <body>
-
+<div class="header" th:insert="Header"></div>
 <div class="welcome_page">
     <form th:action="@{/decision}" th:object="${cityObject}" method="post">
         <input class="input" type="text" placeholder="podaj miasto" th:field="${cityObject.name}" required>
@@ -19,6 +19,7 @@
         <br>
         <input type="submit" value="szukaj">
     </form>
+<div class="footer" th:insert="Footer"></div>
 </div>
 </body>
 </html>

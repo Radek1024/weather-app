@@ -6,11 +6,9 @@
     <title>header</title>
 </head>
 <body>
-<header th:fragment="header">
-    <h1>Hello header</h1>
-    <form class="button" th:action="@{/}" method="post">
-        <button type="submit">wyszukaj ponownie</button>
-    </form>
+<header class="header" th:fragment="header">
+    <a class="center" href="/">serwis pogodowy</a>
+    <a class="right" href="/" >wyszukaj ponownie &#128269;</a>
 </header>
 </body>
 </html>
