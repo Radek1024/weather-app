@@ -1,5 +1,4 @@
 .header, .footer{
-    font-family: Helvetica, Arial, sans-serif;
     position: fixed;
     width: 100%;
     background-color: #333;
@@ -7,7 +6,7 @@
 .header{
     top: 0;
     left: 0;
-    padding: 15px;
+    padding: 5px;
 }
 .header a{
     color: white;
@@ -21,7 +20,7 @@
 }
 .right{
     float: right;
-    padding: 10px 30px;
+    padding: 10px 35px;
 }
 .header a:hover {
     background-color: #ddd;
@@ -31,7 +30,7 @@
     text-align: center;
     bottom: 0;
     left: 0;
-    padding: 17px;
+    padding: 15px;
 }
 .footer a{
     color: white;
@@ -40,11 +39,12 @@
 /**********************************************/
 html{
     background:
-    url("https://w-dog.pw/android-wallpapers/13/9/469943970885558/black-town-city-grey-minimalism-picture-shadow-dark.jpg")
+    url("black-town-city-grey-minimalism-picture-shadow-dark.jpg")
     no-repeat fixed center;
     background-size: 100% 95%;
 }
 body{
+    font-family: Helvetica, Arial, sans-serif;
     margin: auto;
     padding: 20%;
     /*background: #f1f1f1;*/
@@ -54,6 +54,10 @@ body{
     padding: 20%;
     width: 100%;
     text-align: center;
+}
+.input{
+    text-align: center;
+    padding: 5px;
 }
 .cityName {
     display: flex;
