@@ -7,19 +7,21 @@
 </head>
 <body>
 <div class="header" th:insert="Header"></div>
-<div class="welcome_page">
-    <form th:action="@{/decision}" th:object="${cityObject}" method="post">
-        <input class="input" type="text" placeholder="podaj miasto" th:field="${cityObject.name}" required>
-        <br>
-        <input  type="radio" id="one" value="1" th:field="${cityObject.id}" required>
-        <label for="one">jednodniowa</label>
-        <input type="radio" id="two" value="2" th:field="${cityObject.id}">
-        <label for="two">pięcio dniowa</label>
-        <br>
-        <br>
-        <input type="submit" value="szukaj">
-    </form>
+
+    <div class="welcome_page">
+        <form th:action="@{/decision}" th:object="${cityObject}" method="post">
+            <input class="input" type="text" placeholder="podaj miasto" th:field="${cityObject.name}" required>
+            <br>
+            <input type="radio" id="one" value="1" th:field="${cityObject.id}" required>
+            <label for="one">jednodniowa</label>
+            <input type="radio" id="two" value="2" th:field="${cityObject.id}">
+            <label for="two">pięcio dniowa</label>
+            <br>
+            <br>
+            <input type="submit" value="szukaj">
+        </form>
+    </div>
+
 <div class="footer" th:insert="Footer"></div>
-</div>
 </body>
 </html>
