@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pogoda
+        <th:block th:text="${weather.getCityName()}"></th:block>
+    </title>
+</head>
+<body>
+<div class="header" th:insert="Header"></div>
+<div class="city_name">
+    <h3><i>pogoda dla</i>
+        <th:block th:text="${weather.getCityName()}"></th:block>
+    </h3>
+</div>
+<div class="container">
+    <div class="temp_and_icon">
+        <i>
+            <p class="temp">
+                <th:block th:text="${weather.getMain().getTemp()}"></th:block>&deg;C
+            </p>
+            <br>
+            <p class="image">
+                <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${weather.getWeather()[0].getIcon()})}">
+            </p>
+            <br>
+            <p class="description">
+                <th:block th:text="${weather.getWeather()[0].getDescription()}"></th:block>
+            </p>
+        </i>
+    </div>
+    <table class="weather_table">
+        <tr class="weather_table_header">
+            <th>
+                <p>zachmurzenie </p>
+            </th>
+            <th>
+                <p> opady </p>
+            </th>
+            <th>
+                <p> śnieg </p>
+            </th>
+            <th>
+                <p> ciśnienie </p>
+            </th>
+            <th>
+                <p> wilgotność</p>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    <th:block th:text="${weather.getClouds().getAll()}"></th:block>
+                    %
+                </p>
+            </td>
+            <td>
+                <p>
+                    <th:block th:text="${weather.getRain()}"></th:block>
+                    mm
+                </p>
+            </td>
+            <td>
+                <p>
+                    <th:block th:text="${weather.getSnow()}"></th:block>
+                    mm
+                </p>
+            </td>
+            <td>
+                <p>
+                    <th:block th:text="${weather.getMain().getPressure()}"></th:block>
+                    HPa
+                </p>
+            </td>
+            <td>
+                <p>
+                    <th:block th:text="${weather.getMain().getHumidity()}"></th:block>
+                    %
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+<!--
+<ul class="weather_list">
+    <li><th:block th:text="${weather.getWeather()[0].getDescription()}"></th:block></li>
+    <li><th:block th:text="${weather.getWeather()[0].getDescription()}"></th:block></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+-->
+
+
+<div class="footer" th:insert="Footer"></div>
+</body>
+</html>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/Footer.html}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/Header.html}"/>
 
-    <title>Pogoda</title>
+    <title>Pogoda długoterminowa</title>
 </head>
 <body>
 
@@ -37,7 +37,7 @@
             <li class="city-list-temp">
                 <p>temperatura</p>
                 <div th:text="${v?.getMain()?.getTemperature()}"></div>
-                <span>&degC</span>
+                <span>&deg;C</span>
             </li>
             <li class="city-list-pressure">
                 <p>ciśnienie</p>

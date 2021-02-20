@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>404</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <title>not found</title>
 </head>
 <body>
-    <h3>404 error</h3>
+<div class="header" th:insert="Header"></div>
+<div class="error_message">Nie znaleziono strony!</div>
+<h1 class="for_o_four">404</h1>
+<div class="footer" th:insert="Footer"></div>
 </body>
 </html>

@@ -3,11 +3,10 @@
 <head>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Pogoda</title>
 </head>
 <body>
 <div class="header" th:insert="Header"></div>
-
     <div class="welcome_page">
         <form th:action="@{/decision}" th:object="${cityObject}" method="post">
             <input class="input" type="text" placeholder="szukaj miasta" th:field="${cityObject.name}" required>
@@ -15,13 +14,12 @@
             <input type="radio" id="one" value="1" th:field="${cityObject.id}" required>
             <label for="one">jednodniowa</label>
             <input type="radio" id="two" value="2" th:field="${cityObject.id}">
-            <label for="two">pięcio dniowa</label>
+            <label for="two">pięciodniowa</label>
             <br>
             <br>
             <input type="submit" value="szukaj">
         </form>
     </div>
-
 <div class="footer" th:insert="Footer"></div>
 </body>
 </html>

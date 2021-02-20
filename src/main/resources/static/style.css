@@ -17,14 +17,16 @@
     position: absolute;
     left: 43%;
     font-size: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .right{
     float: right;
     padding: 10px 35px;
 }
 .header a:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: black;
+    /*color: black;*/
 }
 .footer{
     text-align: center;
@@ -46,42 +48,32 @@ html{
 body{
     font-family: Helvetica, Arial, sans-serif;
     margin: auto;
-    padding: 20%;
-    /*background: #f1f1f1;*/
+    /*padding: 20%;*/
 }
 .welcome_page {
-    margin: auto;
-    padding: 20%;
-    width: 100%;
+    padding: 17% 0;
     text-align: center;
 }
 .input{
     text-align: center;
     padding: 5px;
 }
-.cityName {
+.city_name {
     display: flex;
     justify-content: center;
-    font-family: sans-serif;
     font-weight: 300;
-    padding: 20px;
+    font-size: 45px;
+    padding-top: 5%;
 }
 .searchMenu {
     padding: 50px;
     font-weight: 400;
     text-align: center;
     color: black;
-    /*margin-top: 80px;*/
 }
 li, p, h5{
     display: inline;
 }
-
-div, span{
-    display: inline;
-    color: black;
-}
-
 .city-list{
     width: 70%;
     margin: auto;
@@ -98,11 +90,6 @@ div, span{
     font-family: sans-serif;
     font-weight: 500;
 }
-
-p{
-    color: darkslategray;
-}
-
 .description{
     color: black;
 }
@@ -117,12 +104,47 @@ p{
     display: inline;
     position: relative;
 }
-.default_error{
-    padding: 25px;
-    margin-top: 200px;
-    margin-bottom: 200px;
+.error_message{
+    padding-top: 20%;
+    margin: auto;
     text-align: center;
-    color: #4CAF50;
-    background-color: #f1f1f1;
+    color: #4caf50;
+    font-size: 35px;
 }
-
+.for_o_four, .five_o_o{
+    padding-top: 17px;
+    text-align: center;
+    font-size: 50px;
+    color: #4caf50;
+}
+.temp_and_icon{
+    float: left;
+    padding-left: 15%;
+    text-align: center;
+    image-resolution: normal;
+    color: #dddddd;
+}
+.temp{
+    font-size: 55px;
+}
+.description{
+    color: #dddddd;
+    font-size: 20px;
+}
+.weather_table{
+    padding-right: 15%;
+    float: right;
+    text-align: center;
+    color: #dddddd;
+    font-style: italic;
+}
+.weather_table_header{
+    font-style: normal;
+    font-size: 17px;
+}
+.container{
+    margin: auto;
+    padding: 2%;
+    text-align: center;
+    width: 50%;
+}

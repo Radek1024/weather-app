@@ -5,18 +5,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
 public class FiveDayWeatherController {
     private final FiveDayWeatherService weatherService;
 
-    @PostMapping("/fiveDayWeatherResult")
+    @PostMapping("/LongTermWeatherController")
     public String getFiveForecast(Model model, HttpSession session) {
 
         model.addAttribute("weather1", weatherService.getForecast(session.getAttribute("cityName").toString()));
@@ -30,7 +27,7 @@ public class FiveDayWeatherController {
         model.addAttribute("hours", weatherService.getHours());
         model.addAttribute("h", weatherService.toDateTime());
 
-        return "Result";
+        return "LongTermWeather";
     }
 
 }

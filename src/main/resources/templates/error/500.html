@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>500</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <title>server error</title>
 </head>
 <body>
-    <h3>500 error, sorry</h3>
-
+<div class="header" th:insert="Header"></div>
+<div class="error_message">Uuups! Coś poszło nie tak... </div>
+<h1 class="five_o_o">500</h1>
+<div class="footer" th:insert="Footer"></div>
 </body>
 </html>

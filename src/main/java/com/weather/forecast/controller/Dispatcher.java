@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.servlet.http.HttpSession;
 
 @Controller("/")
@@ -18,14 +17,13 @@ public class Dispatcher {
         return "Welcome";
     }
     @PostMapping("/decision")
-    public String decide(City city, HttpSession session){
-        session.setAttribute("cityName",city.getName());
+    public String option(City city, HttpSession session){
+        session.setAttribute("cityName", city.getName());
         if(city.getId()==2) {
-            return "forward:/fiveDayWeatherResult";
+            return "forward:/LongTermWeatherController";
         }
         if(city.getId()==1) {
-            //model.addAttribute("cityName", city.getId());
-            return "forward:/currentDayWeatherResult";
+            return "forward:/currentDayWeatherController";
         }
         else
             return "Welcome";
