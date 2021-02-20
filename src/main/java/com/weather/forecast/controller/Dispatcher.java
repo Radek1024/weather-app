@@ -1,7 +1,7 @@
 package com.weather.forecast.controller;
 
 
-import com.weather.forecast.model.fiveDayWeather.City;
+import com.weather.forecast.model.longTermWeather.City;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;

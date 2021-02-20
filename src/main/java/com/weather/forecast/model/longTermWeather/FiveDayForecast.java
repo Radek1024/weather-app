@@ -1,12 +1,10 @@
-package com.weather.forecast.model.fiveDayWeather;
+package com.weather.forecast.model.longTermWeather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Configurable;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 
 @NoArgsConstructor

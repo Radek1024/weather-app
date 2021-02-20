@@ -2,17 +2,14 @@ package com.weather.forecast;
 
 import com.weather.forecast.model.currentWeather.Clouds;
 import com.weather.forecast.model.currentWeather.Rain;
-import com.weather.forecast.model.fiveDayWeather.City;
-import com.weather.forecast.model.fiveDayWeather.FiveDayForecast;
-import com.weather.forecast.model.fiveDayWeather.List;
-import com.weather.forecast.service.FiveDayWeatherService;
+import com.weather.forecast.model.longTermWeather.City;
+import com.weather.forecast.model.longTermWeather.FiveDayForecast;
+import com.weather.forecast.model.longTermWeather.List;
+import com.weather.forecast.service.LongTermWeatherService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
-import org.springframework.mock.web.MockHttpSession;
 
-import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
@@ -23,12 +20,12 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class ForecastServiceTests {
-    private FiveDayWeatherService fiveDayWeather;
+    private LongTermWeatherService fiveDayWeather;
     private List list;
 
     @BeforeEach
     public void init(){
-        fiveDayWeather = mock(FiveDayWeatherService.class);
+        fiveDayWeather = mock(LongTermWeatherService.class);
         list = mock(List.class);
     }
 

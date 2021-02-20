@@ -1,14 +1,13 @@
 package com.weather.forecast.service;
 
-import com.weather.forecast.model.fiveDayWeather.FiveDayForecast;
-import com.weather.forecast.model.fiveDayWeather.List;
+import com.weather.forecast.model.longTermWeather.FiveDayForecast;
+import com.weather.forecast.model.longTermWeather.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import javax.servlet.http.HttpSession;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +16,7 @@ import java.util.stream.IntStream;
 
 @Service
 @RequiredArgsConstructor
-public class FiveDayWeatherService {
+public class LongTermWeatherService {
     private final RestTemplate restTemplate;
     private ResponseEntity<FiveDayForecast> request;
 

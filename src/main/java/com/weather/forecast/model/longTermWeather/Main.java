@@ -1,4 +1,4 @@
-package com.weather.forecast.model.fiveDayWeather;
+package com.weather.forecast.model.longTermWeather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

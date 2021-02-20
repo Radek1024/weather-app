@@ -1,6 +1,6 @@
 package com.weather.forecast.controller;
 
-import com.weather.forecast.service.FiveDayWeatherService;
+import com.weather.forecast.service.LongTermWeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 
 @Controller
 @RequiredArgsConstructor
-public class FiveDayWeatherController {
-    private final FiveDayWeatherService weatherService;
+public class LongTermWeatherController {
+    private final LongTermWeatherService weatherService;
 
     @PostMapping("/LongTermWeatherController")
     public String getFiveForecast(Model model, HttpSession session) {

@@ -11,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor
@@ -27,8 +29,10 @@ public class CurrentWeatherService {
         return new CurrentWeather();
     }
 
-    public DayOfWeek getDate(){
-        return LocalDate.now().getDayOfWeek();
+    public String getDate(){
+        return LocalDate.now().format(
+                DateTimeFormatter.ofPattern("EEEE, dd/MM/yyyy",
+                Locale.forLanguageTag("pl")));
     }
 
 }

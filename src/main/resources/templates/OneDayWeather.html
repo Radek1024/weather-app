@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <meta charset="UTF-8">
     <title>Pogoda
         <th:block th:text="${weather.getCityName()}"></th:block>
@@ -9,10 +10,16 @@
 <body>
 <div class="header" th:insert="Header"></div>
 <div class="city_name">
-    <h3><i>pogoda dla</i>
+    <h1>pogoda
         <th:block th:text="${weather.getCityName()}"></th:block>
-    </h3>
+    </h1>
 </div>
+<div class="city_date">
+    <h2>
+        <th:block th:text="${dayOfWeek}"></th:block>
+    </h2>
+</div>
+
 <div class="container">
     <div class="temp_and_icon">
         <i>
@@ -32,22 +39,22 @@
     <table class="weather_table">
         <tr class="weather_table_header">
             <th>
-                <p>zachmurzenie </p>
+                <p>zachmurzenie</p>
             </th>
             <th>
-                <p> opady </p>
+                <p>opady</p>
             </th>
             <th>
-                <p> śnieg </p>
+                <p>śnieg</p>
             </th>
             <th>
-                <p> ciśnienie </p>
+                <p>ciśnienie</p>
             </th>
             <th>
-                <p> wilgotność</p>
+                <p>wilgotność</p>
             </th>
         </tr>
-        <tr>
+        <tr class="weather_table_data">
             <td>
                 <p>
                     <th:block th:text="${weather.getClouds().getAll()}"></th:block>
@@ -81,6 +88,7 @@
         </tr>
     </table>
 </div>
+
 <!--
 <ul class="weather_list">
     <li><th:block th:text="${weather.getWeather()[0].getDescription()}"></th:block></li>
