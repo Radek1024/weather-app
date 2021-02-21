@@ -73,7 +73,7 @@ body{
     color: #dddddd;
 
 }
-.searchMenu {
+.searchMenu{
     padding: 50px;
     font-weight: 400;
     text-align: center;
@@ -127,8 +127,8 @@ li, p, h5{
 }
 .temp_and_icon{
     float: left;
-    /*padding-left: 15%;*/
     text-align: center;
+    padding-left: 5%;
     image-resolution: normal;
     color: #dddddd;
 }
@@ -138,33 +138,34 @@ li, p, h5{
 .description{
     color: #dddddd;
     font-size: 20px;
+    font-weight: bold;
 }
 .weather_table{
     float: right;
     color: #dddddd;
     font-style: italic;
     padding-left: 5%;
-}
-p.weather_table_header{
-    font-size: 17px;
-    padding: 10px;
     text-align: left;
+}
+.weather_table_header{
+    font-size: 20px;
 }
 .weather_table_data{
-    padding: 10px;
-    text-align: left;
-    height: 50px;
+    height: 35px;
     vertical-align: bottom;
 }
 th,td{
-    padding: 15px;
+    padding: 10px;
+}
+tr:nth-child(odd){
+    font-size: 20px;
+    font-weight: bold;
 }
 .container{
     overflow: auto;
     margin: auto;
-    width: 43%;
+    width: 80%;
     background-color: black;
     opacity: 0.35;
-    border-radius: 10px;
-    /*border: 1px solid seashell;*/
+    border-radius: 5px;
 }

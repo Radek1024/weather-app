@@ -19,7 +19,6 @@
         <th:block th:text="${dayOfWeek}"></th:block>
     </h2>
 </div>
-
 <div class="container">
     <div class="temp_and_icon">
         <i>
@@ -38,68 +37,85 @@
     </div>
     <table class="weather_table">
         <tr class="weather_table_header">
-            <th>
-                <p>zachmurzenie</p>
-            </th>
-            <th>
-                <p>opady</p>
-            </th>
-            <th>
-                <p>śnieg</p>
-            </th>
-            <th>
-                <p>ciśnienie</p>
-            </th>
-            <th>
-                <p>wilgotność</p>
-            </th>
+            <td>
+                zachmurzenie
+            </td>
+            <td>
+                opady
+            </td>
+            <td>
+                śnieg
+            </td>
+            <td>
+                ciśnienie
+            </td>
+            <td>
+                wilgotność
+            </td>
         </tr>
         <tr class="weather_table_data">
             <td>
-                <p>
-                    <th:block th:text="${weather.getClouds().getAll()}"></th:block>
-                    %
-                </p>
+                <th:block th:text="${weather.getClouds().getAll()}"></th:block>
+                %
             </td>
             <td>
-                <p>
-                    <th:block th:text="${weather.getRain()}"></th:block>
-                    mm
-                </p>
+                <th:block th:text="${weather.getRain()}"></th:block>
+                mm
             </td>
             <td>
-                <p>
-                    <th:block th:text="${weather.getSnow()}"></th:block>
-                    mm
-                </p>
+                <th:block th:text="${weather.getSnow()}"></th:block>
+                mm
             </td>
             <td>
-                <p>
-                    <th:block th:text="${weather.getMain().getPressure()}"></th:block>
-                    HPa
-                </p>
+                <th:block th:text="${weather.getMain().getPressure()}"></th:block>
+                HPa
             </td>
             <td>
-                <p>
-                    <th:block th:text="${weather.getMain().getHumidity()}"></th:block>
-                    %
-                </p>
+                <th:block th:text="${weather.getMain().getHumidity()}"></th:block>
+                %
+            </td>
+        </tr>
+        <tr>
+            <td>
+                temperatura odczuwalna
+            </td>
+            <td>
+                temperatura maksymalna
+            </td>
+            <td>
+                temperatura minimalna
+            </td>
+            <td>
+                temperatura na<br>poziomie morza
+            </td>
+            <td>
+                temperatura na<br>poziomie gruntu
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:text="${weather.getMain().getFeelsLike()}"></th:block>
+                &deg;C
+            </td>
+            <td>
+                <th:block th:text="${weather.getMain().getTempMax()}"></th:block>
+                &deg;C
+            </td>
+            <td>
+                <th:block th:text="${weather.getMain().getTempMin()}"></th:block>
+                &deg;C
+            </td>
+            <td>
+                <th:block th:text="${weather.getMain().getSeaLevel()}"></th:block>
+                &deg;C
+            </td>
+            <td>
+                <th:block th:text="${weather.getMain().getGroundLevel()}"></th:block>
+                &deg;C
             </td>
         </tr>
     </table>
 </div>
-
-<!--
-<ul class="weather_list">
-    <li><th:block th:text="${weather.getWeather()[0].getDescription()}"></th:block></li>
-    <li><th:block th:text="${weather.getWeather()[0].getDescription()}"></th:block></li>
-    <li></li>
-    <li></li>
-    <li></li>
-</ul>
--->
-
-
 <div class="footer" th:insert="Footer"></div>
 </body>
 </html>
