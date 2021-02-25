@@ -7,4 +7,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class City {
     private String cityName;
+
 }

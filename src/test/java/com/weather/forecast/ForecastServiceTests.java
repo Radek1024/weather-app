@@ -74,6 +74,7 @@ public class ForecastServiceTests {
         list1.setRain(rain1);
         list1.setClouds(clouds1);
 
+
         java.util.List<List> listOfList = new ArrayList<>();
         Collections.addAll(listOfList,list,list1);
 

@@ -8,264 +8,366 @@
     <link rel="stylesheet" type="text/css" th:href="@{/Footer.html}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/Header.html}"/>
 
-    <title>Pogoda długoterminowa</title>
+    <title>Pogoda
+        <th:block th:text="${weather1.getCity().getName()}"></th:block>
+    </title>
 </head>
 <body>
-
 <div class="header" th:insert="Header"></div>
-
-<div class="cityName">
-    <h1>pogoda dla <th:block th:text="${weather1.getCity().getName()}"></th:block>
+<div class="city_name">
+    <h1>
+        pogoda
+        <th:block th:text="${weather1.getCity().getName()}"></th:block>
     </h1>
 </div>
 
-<ul class="city-list">
-    <li class="city-list-dayOfWeek" th:text="${dayOfWeek.get(0)}"></li>
-    <br>
-    <li class="city-list-date" th:text="${#temporals.format(#temporals.createNow(),'dd.MM.yyyy')}"></li>
-    <br>
-    <li class="city-list-header" th:each="v, stat : ${firstDay}">
-        <div th:if="${v}">
-            <div class="city-list-hour" th:text="${#temporals.format(hours.get(stat.index),'HH:mm')}"></div>
-        </div>
-        <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
-            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${w.getIcon()})}">
-            <div class="description" th:text="${w.getDescription()}"></div>
-        </div>
+<div class="container_lt">
 
-        <ul class="inner-list">
-            <li class="city-list-temp">
-                <p>temperatura</p>
-                <div th:text="${v?.getMain()?.getTemperature()}"></div>
-                <span>&deg;C</span>
-            </li>
-            <li class="city-list-pressure">
-                <p>ciśnienie</p>
-                <div th:text="${v?.getMain()?.getPressure()}"></div>
-                <span>HPa</span>
-            </li>
-            <li class="city-list-humidity">
-                <p>wilgotność</p>
-                <div th:text="${v?.getMain().getHumidity()}"></div>
-                <span>%</span>
-            </li>
-            <br>
-            <li class="city-list-rain">
-                <p>deszcz</p>
-                <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
-                <span>mm</span>
-            </li>
-            <li class="city-list-clouds">
-                <p>zachmurzenie</p>
-                <div th:text="${v?.getClouds().getAll()}"></div>
-                <span>%</span>
-            </li>
-            <li class="city-list-wind">
-                <p>wiatr</p>
-                <div th:text="${v?.getWind().getSpeed()}"></div>
-                <span>m/s</span>
-            </li>
-        </ul>
+    <div class="firstDay">
+        <div class="day_of_week_and_date_lt">
+            <div class="day_of_week_lt" th:text="${dayOfWeek.get(0)}"></div>
+            <div class="date_lt" th:text="${#temporals.format(#temporals.createNow(),'dd MM yyyy')}"></div>
+        </div>
+        <div class="first_day_lt" th:each="i , stat : ${firstDay}">
+            <div class="hour"
+                 th:text="${#temporals.format(hours.get(stat.index),'HH:mm')}">
+            </div>
+            <div th:if="${i}">
+                <div class="icon_and_description_lt" th:each="j : ${i?.getWeather()}">
+                    <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${j.getIcon()})}">
+                    <div class="first_day_lt_description" th:text="${j.getDescription()}">
+                    </div>
+                </div>
+                <table class="weather_table_lt">
+                    <tr>
+                        <td>
+                            temperatura
+                        </td>
+                        <td>
+                            ciśnienie
+                        </td>
+                        <td>
+                            wilgotność
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th:block th:text="${i.getMain().getTemperature()}"></th:block>
+                            &deg;C
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getMain().getPressure()}"></th:block>
+                            HPa
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getMain().getHumidity()}"></th:block>
+                            %
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            wiatr
+                        </td>
+                        <td>
+                            deszcz
+                        </td>
+                        <td>śnieg</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th:block th:text="${i.getWind().getSpeed()}"></th:block>
+                            m/s
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getRain()?.getRainOneHour()}"></th:block>
+                            mm
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getSnow()?.getSnowOneHour()}"></th:block>
+                            mm
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 
-        <br>
-    </li>
-    <br>
-    <li class="city-list-dayOfWeek" th:text="${dayOfWeek.get(1)}"></li>
-    <br>
-    <li class="city-list-date" th:text="${#temporals.format(day.plusDays(1),'dd.MM.yyyy')}"></li>
-    <br>
-    <li class="city-list-header" th:each="v, stat : ${secondDay}">
-        <div th:if="${v}">
-            <div class="city-list-hour" th:text="${#temporals.format(h.get(stat.index),'HH:mm')}"></div>
+    <div class="secondDay">
+        <div class="day_of_week_and_date_lt">
+            <div class="day_of_week_lt" th:text="${dayOfWeek.get(1)}"></div>
+            <div class="date_lt" th:text="${#temporals.format(day.plusDays(1),'dd MM yyyy')}"></div>
         </div>
-        <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
-            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${w.getIcon()})}">
-            <span th:text="${w.getDescription()}"></span>
+        <div class="second_day_lt" th:each="i , stat : ${secondDay}">
+            <div class="hour"
+                 th:text="${#temporals.format(h.get(stat.index),'HH:mm')}">
+            </div>
+            <div class="display" th:if="${i}">
+                <div class="icon_and_description_lt" th:each="j : ${i?.getWeather()}">
+                    <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${j.getIcon()})}">
+                    <div class="first_day_lt_description" th:text="${j.getDescription()}">
+                    </div>
+                </div>
+                <table class="weather_table_lt">
+                    <tr>
+                        <td>
+                            temperatura
+                        </td>
+                        <td>
+                            ciśnienie
+                        </td>
+                        <td>
+                            wilgotność
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th:block th:text="${i.getMain().getTemperature()}"></th:block>
+                            &deg;C
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getMain().getPressure()}"></th:block>
+                            HPa
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getMain().getHumidity()}"></th:block>
+                            %
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            wiatr
+                        </td>
+                        <td>
+                            deszcz
+                        </td>
+                        <td>śnieg</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th:block th:text="${i.getWind().getSpeed()}"></th:block>
+                            m/s
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getRain()?.getRainOneHour()}"></th:block>
+                            mm
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getSnow()?.getSnowOneHour()}"></th:block>
+                            mm
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <ul class="inner-list">
-            <li class="city-list-temp">
-                <p>temperatura</p>
-                <div th:text="${v?.getMain()?.getTemperature()}"></div>
-                <span>&degC</span>
-            </li>
-            <li class="city-list-pressure">
-                <p>ciśnienie</p>
-                <div th:text="${v?.getMain()?.getPressure()}"></div>
-                <span>HPa</span>
-            </li>
-            <li class="city-list-humidity">
-                <p>wilgotność</p>
-                <div th:text="${v?.getMain().getHumidity()}"></div>
-                <span>%</span>
-            </li>
-            <br>
-            <li class="city-list-rain">
-                <p>deszcz</p>
-                <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
-                <span>mm</span>
-            </li>
-            <li class="city-list-clouds">
-                <p>zachmurzenie</p>
-                <div th:text="${v?.getClouds().getAll()}"></div>
-                <span>%</span>
-            </li>
-            <li class="city-list-wind">
-                <p>wiatr</p>
-                <div th:text="${v?.getWind().getSpeed()}"></div>
-                <span>m/s</span>
-            </li>
-        </ul>
-        <br>
-    </li>
-    <br>
-    <li class="city-list-dayOfWeek" th:text="${dayOfWeek.get(2)}"></li>
-    <br>
-    <li class="city-list-date" th:text="${#temporals.format(day.plusDays(2),'dd.MM.yyyy')}"></li>
-    <br>
-    <li class="city-list-icon" th:each="v, stat : ${thirdDay}">
-        <div th:if="${v}">
-            <div class="city-list-hour" th:text="${#temporals.format(h.get(stat.index),'HH:mm')}"></div>
-        </div>
-        <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
-            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${w.getIcon()})}">
-            <span th:text="${w.getDescription()}"></span>
-        </div>
-        <ul class="inner-list">
-            <li class="city-list-temp">
-                <p>temperatura</p>
-                <div th:text="${v?.getMain()?.getTemperature()}"></div>
-                <span>&degC</span>
-            </li>
-            <li class="city-list-pressure">
-                <p>ciśnienie</p>
-                <div th:text="${v?.getMain()?.getPressure()}"></div>
-                <span>HPa</span>
-            </li>
-            <li class="city-list-humidity">
-                <p>wilgotność</p>
-                <div th:text="${v?.getMain().getHumidity()}"></div>
-                <span>%</span>
-            </li>
-            <br>
-            <li class="city-list-rain">
-                <p>deszcz</p>
-                <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
-                <span>mm</span>
-            </li>
-            <li class="city-list-clouds">
-                <p>zachmurzenie</p>
-                <div th:text="${v?.getClouds().getAll()}"></div>
-                <span>%</span>
-            </li>
-            <li class="city-list-wind">
-                <p>wiatr</p>
-                <div th:text="${v?.getWind().getSpeed()}"></div>
-                <span>m/s</span>
-            </li>
-        </ul>
-        <br>
-    </li>
-    <br>
-    <li class="city-list-dayOfWeek" th:text="${dayOfWeek.get(3)}"></li>
-    <br>
-    <li class="city-list-date" th:text="${#temporals.format(day.plusDays(3),'dd.MM.yyyy')}"></li>
-    <br>
-    <li class="city-list-icon" th:each="v, stat : ${fourthDay}">
-        <div th:if="${v}">
-            <div class="city-list-hour" th:text="${#temporals.format(h.get(stat.index),'HH:mm')}"></div>
-        </div>
-        <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
-            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${w.getIcon()})}">
-            <span th:text="${w.getDescription()}"></span>
-        </div>
-        <ul class="inner-list">
-            <li class="city-list-temp">
-                <p>temperatura</p>
-                <div th:text="${v?.getMain()?.getTemperature()}"></div>
-                <span>&degC</span>
-            </li>
-            <li class="city-list-pressure">
-                <p>ciśnienie</p>
-                <div th:text="${v?.getMain()?.getPressure()}"></div>
-                <span>HPa</span>
-            </li>
-            <li class="city-list-humidity">
-                <p>wilgotność</p>
-                <div th:text="${v?.getMain().getHumidity()}"></div>
-                <span>%</span>
-            </li>
-            <br>
-            <li class="city-list-rain">
-                <p>deszcz</p>
-                <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
-                <span>mm</span>
-            </li>
-            <li class="city-list-clouds">
-                <p>zachmurzenie</p>
-                <div th:text="${v?.getClouds().getAll()}"></div>
-                <span>%</span>
-            </li>
-            <li class="city-list-wind">
-                <p>wiatr</p>
-                <div th:text="${v?.getWind().getSpeed()}"></div>
-                <span>m/s</span>
-            </li>
-        </ul>
-        <br>
-    </li>
-    <br>
-    <li class="city-list-dayOfWeek" th:text="${dayOfWeek.get(4)}"></li>
-    <br>
-    <li class="city-list-date" th:text="${#temporals.format(day.plusDays(4),'dd.MM.yyyy')}"></li>
-    <br>
-    <li class="city-list-icon" th:each="v, stat : ${fifthDay}">
-        <div th:if="${v}">
-            <div class="city-list-hour" th:text="${#temporals.format(h.get(stat.index),'HH:mm')}"></div>
-        </div>
-        <div class="city-list-icon" th:each="w : ${v?.getWeather()}">
-            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${w.getIcon()})}">
-            <span th:text="${w.getDescription()}"></span>
-        </div>
-        <ul class="inner-list">
-            <li class="city-list-temp">
-                <p>temperatura</p>
-                <div th:text="${v?.getMain()?.getTemperature()}"></div>
-                <span>&degC</span>
-            </li>
-            <li class="city-list-pressure">
-                <p>ciśnienie</p>
-                <div th:text="${v?.getMain()?.getPressure()}"></div>
-                <span>HPa</span>
-            </li>
-            <li class="city-list-humidity">
-                <p>wilgotność</p>
-                <div th:text="${v?.getMain().getHumidity()}"></div>
-                <span>%</span>
-            </li>
-            <br>
-            <li class="city-list-rain">
-                <p>deszcz</p>
-                <div th:text="${v?.getRain()?.getRainOneHour()}"></div>
-                <span>mm</span>
-            </li>
-            <li class="city-list-clouds">
-                <p>zachmurzenie</p>
-                <div th:text="${v?.getClouds().getAll()}"></div>
-                <span>%</span>
-            </li>
-            <li class="city-list-wind">
-                <p>wiatr</p>
-                <div th:text="${v?.getWind().getSpeed()}"></div>
-                <span>m/s</span>
-            </li>
-        </ul>
-        <br>
-    </li>
-</ul>
+    </div>
 
+    <div class="thirdDay">
+        <div class="day_of_week_and_date_lt">
+            <div class="day_of_week_lt" th:text="${dayOfWeek.get(2)}"></div>
+            <div class="date_lt" th:text="${#temporals.format(day.plusDays(2),'dd MM yyyy')}"></div>
+        </div>
+        <div class="third_day_lt" th:each="i , stat : ${thirdDay}">
+            <div class="hour"
+                 th:text="${#temporals.format(h.get(stat.index),'HH:mm')}">
+            </div>
+            <div th:if="${i}">
+                <div class="icon_and_description_lt" th:each="j : ${i?.getWeather()}">
+                    <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${j.getIcon()})}">
+                    <div class="first_day_lt_description" th:text="${j.getDescription()}">
+                    </div>
+                </div>
+                <table class="weather_table_lt">
+                    <tr>
+                        <td>
+                            temperatura
+                        </td>
+                        <td>
+                            ciśnienie
+                        </td>
+                        <td>
+                            wilgotność
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th:block th:text="${i.getMain().getTemperature()}"></th:block>
+                            &deg;C
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getMain().getPressure()}"></th:block>
+                            HPa
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getMain().getHumidity()}"></th:block>
+                            %
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            wiatr
+                        </td>
+                        <td>
+                            deszcz
+                        </td>
+                        <td>śnieg</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th:block th:text="${i.getWind().getSpeed()}"></th:block>
+                            m/s
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getRain()?.getRainOneHour()}"></th:block>
+                            mm
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getSnow()?.getSnowOneHour()}"></th:block>
+                            mm
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 
+    <div class="fourthDay">
+        <div class="day_of_week_and_date_lt">
+            <div class="day_of_week_lt" th:text="${dayOfWeek.get(3)}"></div>
+            <div class="date_lt" th:text="${#temporals.format(day.plusDays(3),'dd MM yyyy')}"></div>
+        </div>
+        <div class="fourth_day_lt" th:each="i , stat : ${fourthDay}">
+            <div class="hour"
+                 th:text="${#temporals.format(h.get(stat.index),'HH:mm')}">
+            </div>
+            <div th:if="${i}">
+                <div class="icon_and_description_lt" th:each="j : ${i?.getWeather()}">
+                    <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${j.getIcon()})}">
+                    <div class="first_day_lt_description" th:text="${j.getDescription()}">
+                    </div>
+                </div>
+                <table class="weather_table_lt">
+                    <tr>
+                        <td>
+                            temperatura
+                        </td>
+                        <td>
+                            ciśnienie
+                        </td>
+                        <td>
+                            wilgotność
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th:block th:text="${i.getMain().getTemperature()}"></th:block>
+                            &deg;C
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getMain().getPressure()}"></th:block>
+                            HPa
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getMain().getHumidity()}"></th:block>
+                            %
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            wiatr
+                        </td>
+                        <td>
+                            deszcz
+                        </td>
+                        <td>śnieg</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th:block th:text="${i.getWind().getSpeed()}"></th:block>
+                            m/s
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getRain()?.getRainOneHour()}"></th:block>
+                            mm
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getSnow()?.getSnowOneHour()}"></th:block>
+                            mm
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 
+    <div class="fifthDay">
+        <div class="day_of_week_and_date_lt">
+            <div class="day_of_week_lt" th:text="${dayOfWeek.get(4)}"></div>
+            <div class="date_lt" th:text="${#temporals.format(day.plusDays(4),'dd MM yyyy')}"></div>
+        </div>
+        <div class="fifth_day_lt" th:each="i , stat : ${fifthDay}">
+            <div class="hour"
+                 th:text="${#temporals.format(h.get(stat.index),'HH:mm')}">
+            </div>
+            <div th:if="${i}">
+                <div class="icon_and_description_lt" th:each="j : ${i?.getWeather()}">
+                    <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${j.getIcon()})}">
+                    <div class="first_day_lt_description" th:text="${j.getDescription()}">
+                    </div>
+                </div>
+                <table class="weather_table_lt">
+                    <tr>
+                        <td>
+                            temperatura
+                        </td>
+                        <td>
+                            ciśnienie
+                        </td>
+                        <td>
+                            wilgotność
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th:block th:text="${i.getMain().getTemperature()}"></th:block>
+                            &deg;C
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getMain().getPressure()}"></th:block>
+                            HPa
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getMain().getHumidity()}"></th:block>
+                            %
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            wiatr
+                        </td>
+                        <td>
+                            deszcz
+                        </td>
+                        <td>śnieg</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th:block th:text="${i.getWind().getSpeed()}"></th:block>
+                            m/s
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getRain()?.getRainOneHour()}"></th:block>
+                            mm
+                        </td>
+                        <td>
+                            <th:block th:text="${i.getSnow()?.getSnowOneHour()}"></th:block>
+                            mm
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="footer" th:insert="Footer"></div>
-
 </body>
 </html>

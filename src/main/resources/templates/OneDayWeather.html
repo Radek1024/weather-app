@@ -3,15 +3,15 @@
 <head>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <meta charset="UTF-8">
-    <title>Pogoda
-        <th:block th:text="${weather.getCityName()}"></th:block>
+    <title>
+        Pogoda <th:block th:text="${weather.getCityName()}"></th:block>
     </title>
 </head>
 <body>
 <div class="header" th:insert="Header"></div>
 <div class="city_name">
-    <h1>pogoda
-        <th:block th:text="${weather.getCityName()}"></th:block>
+    <h1>
+        pogoda <th:block th:text="${weather.getCityName()}"></th:block>
     </h1>
 </div>
 <div class="city_date">
@@ -59,11 +59,11 @@
                 %
             </td>
             <td>
-                <th:block th:text="${weather.getRain()}"></th:block>
+                <th:block th:text="${weather.getRain()?.getRainOneHour()}"></th:block>
                 mm
             </td>
             <td>
-                <th:block th:text="${weather.getSnow()}"></th:block>
+                <th:block th:text="${weather.getSnow()?.getSnowOneHour()}"></th:block>
                 mm
             </td>
             <td>
@@ -75,7 +75,7 @@
                 %
             </td>
         </tr>
-        <tr>
+        <tr class="weather_table_header">
             <td>
                 temperatura odczuwalna
             </td>
@@ -86,13 +86,13 @@
                 temperatura minimalna
             </td>
             <td>
-                temperatura na<br>poziomie morza
+                ciśnienie na<br>poziomie morza
             </td>
             <td>
-                temperatura na<br>poziomie gruntu
+                ciśnienie na<br>poziomie gruntu
             </td>
         </tr>
-        <tr>
+        <tr class="weather_table_data">
             <td>
                 <th:block th:text="${weather.getMain().getFeelsLike()}"></th:block>
                 &deg;C
@@ -107,11 +107,11 @@
             </td>
             <td>
                 <th:block th:text="${weather.getMain().getSeaLevel()}"></th:block>
-                &deg;C
+                HPa
             </td>
             <td>
                 <th:block th:text="${weather.getMain().getGroundLevel()}"></th:block>
-                &deg;C
+                HPa
             </td>
         </tr>
     </table>

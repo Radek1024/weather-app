@@ -9,8 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.IntStream;
 
@@ -90,14 +93,14 @@ public class LongTermWeatherService {
         return list;
     }
 
-    public Map<Integer, DayOfWeek> getDate() {
-        Map<Integer, DayOfWeek> dateMap = new HashMap<>();
-        IntStream.rangeClosed(0, 4)
-                .forEach(i -> dateMap.put(i, LocalDate.now().plusDays(i).getDayOfWeek()));
+    public Map<Integer, String> getDayOfWeek() {
+        Map<Integer, String> dateMap = new HashMap<>();
+        IntStream.rangeClosed(0,4)
+                .forEach(i->dateMap.put(i, LocalDate.now().plusDays(i).format(DateTimeFormatter.ofPattern("EEEE",Locale.forLanguageTag("pl")))));
         return dateMap;
     }
 
-    public java.util.List<LocalTime> toDateTime(){
+    public java.util.List<LocalTime> getHours(){
         java.util.List<LocalTime> list = new ArrayList<>();
         IntStream.iterate(0,i -> i + 3).limit(8)
                 .forEach(i ->{
@@ -106,7 +109,7 @@ public class LongTermWeatherService {
         return list;
     }
 
-    public Map<Integer,LocalDateTime> getHours(){
+    public Map<Integer,LocalDateTime> getFirstDayHours(){
         Map<Integer,LocalDateTime> hourMap = new HashMap<>();
         IntStream.rangeClosed(0,39)
                 .forEach(i-> {

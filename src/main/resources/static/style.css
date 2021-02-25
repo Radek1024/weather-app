@@ -1,88 +1,102 @@
-.header, .footer{
+.header, .footer {
     position: fixed;
     width: 100%;
     background-color: #333;
 }
-.header{
+
+.header {
     top: 0;
     left: 0;
     padding: 5px;
 }
-.header a{
+
+.header a {
     color: white;
     text-decoration: none;
     overflow: hidden;
 }
-.center{
+
+.center {
     position: absolute;
     left: 43%;
     font-size: 30px;
     padding-left: 20px;
     padding-right: 20px;
 }
-.right{
+
+.right {
     float: right;
     padding: 10px 35px;
 }
+
 .header a:hover {
     /*background-color: #333333;*/
     color: black;
 }
-.footer{
+
+.footer {
     text-align: center;
     bottom: 0;
     left: 0;
     padding: 15px;
 }
-.footer a{
+
+.footer a {
     color: white;
     font-style: italic;
 }
+
 /**********************************************/
-html{
-    background:
-    url("black-town-city-grey-minimalism-picture-shadow-dark.jpg")
-    no-repeat fixed center;
+html {
+    background: url("black-town-city-grey-minimalism-picture-shadow-dark.jpg") no-repeat fixed center;
     background-size: 100% 95%;
 }
-body{
+
+body {
     font-family: Helvetica, Arial, sans-serif;
     margin: auto;
 }
+
 .welcome_page {
     padding: 17% 0;
     text-align: center;
 }
-.input{
+
+.input {
     text-align: center;
     padding: 5px;
 }
-.city_name{
-    display: flex;
-    justify-content: center;
+
+.city_name {
+    margin: auto;
+    text-align: center;
     font-weight: 200;
-    font-size: 30px;
+    font-size: 20px;
     font-style: italic;
     color: #dddddd;
     padding-top: 3%;
 }
-.city_date{
+
+.city_date {
     margin: 0;
     text-align: center;
     font-style: italic;
     color: #dddddd;
 
 }
-.searchMenu{
+
+.searchMenu {
     padding: 50px;
     font-weight: 400;
     text-align: center;
     color: black;
 }
-li, p, h5{
+
+li, p, h5 {
     display: inline;
 }
-.city-list{
+
+.city-list {
     width: 70%;
     margin: auto;
     alignment: center;
@@ -94,78 +108,136 @@ li, p, h5{
     font-size: 35px;
     font-family: sans-serif;
 }
-.city-list-date{
+
+.city-list-date {
     font-family: sans-serif;
     font-weight: 500;
 }
-.description{
+
+.description {
     color: black;
 }
 
-.city-list-hour{
+.city-list-hour {
     color: black;
     font-weight: 500;
     font-family: sans-serif;
 }
 
-.inner-list{
+.inner-list {
     display: inline;
     position: relative;
 }
-.error_message{
+
+.error_message {
     padding-top: 20%;
     margin: auto;
     text-align: center;
     color: #4caf50;
     font-size: 35px;
 }
-.for_o_four, .five_o_o{
+
+.for_o_four, .five_o_o {
     padding-top: 17px;
     text-align: center;
     font-size: 50px;
     color: #4caf50;
 }
-.temp_and_icon{
+
+.temp_and_icon {
     float: left;
     text-align: center;
     padding-left: 5%;
     image-resolution: normal;
     color: #dddddd;
 }
-.temp{
+
+.temp {
     font-size: 55px;
 }
-.description{
+
+.description {
     color: #dddddd;
     font-size: 20px;
     font-weight: bold;
 }
-.weather_table{
+
+.weather_table {
     float: right;
     color: #dddddd;
     font-style: italic;
-    padding-left: 5%;
+    padding: 5px 5% 0 2%;
     text-align: left;
 }
-.weather_table_header{
-    font-size: 20px;
-}
-.weather_table_data{
-    height: 35px;
+
+.weather_table_data {
+    height: 40px;
     vertical-align: bottom;
 }
-th,td{
+
+.weather_table td{
     padding: 10px;
 }
-tr:nth-child(odd){
+
+.weather_table tr:nth-child(odd) {
     font-size: 20px;
     font-weight: bold;
 }
-.container{
+/***********************************/
+.container {
     overflow: auto;
     margin: auto;
-    width: 80%;
+    width: 85%;
     background-color: black;
     opacity: 0.35;
     border-radius: 5px;
+}
+.container_lt {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-row-gap: 5px;
+    overflow: auto;
+    margin: auto;
+    background-color: black;
+    opacity: 0.35;
+    padding-bottom: 2%;
+}
+.first_day_lt_description{
+    color: dodgerblue;
+}
+.firstDay, .secondDay, .thirdDay, .fourthDay, .fifthDay{
+    border-left: 3px solid #dddddd;
+    border-right: 3px solid #dddddd;
+    /*border-radius: 5px;*/
+    padding: 10px;
+}
+.weather_table_lt {
+    color: white;
+    border-bottom: 1px solid #dddddd;
+}
+.weather_table_lt td:nth-child(even){
+    padding: 20px;
+    text-align: center;
+    vertical-align: bottom;
+}
+.weather_table_lt tr:nth-child(odd){
+    font-weight: bold;
+    color: #4caf50;
+}
+.icon_and_description_lt {
+    color: white;
+    align-items: center;
+    font-weight: bold;
+}
+.hour {
+    color: red;
+    font-size: large;
+    text-align: left;
+    font-style: italic;
+    font-weight: bold;
+}
+.day_of_week_and_date_lt{
+    color: dodgerblue;
+    font-weight: bold;
+    font-size: large;
 }

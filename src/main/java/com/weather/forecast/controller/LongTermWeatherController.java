@@ -22,10 +22,10 @@ public class LongTermWeatherController {
         model.addAttribute("thirdDay", weatherService.getThirdDay());
         model.addAttribute("fourthDay", weatherService.getFourthDay());
         model.addAttribute("fifthDay", weatherService.getFifthDay());
-        model.addAttribute("dayOfWeek", weatherService.getDate());
+        model.addAttribute("dayOfWeek", weatherService.getDayOfWeek());
         model.addAttribute("day", LocalDateTime.now());
-        model.addAttribute("hours", weatherService.getHours());
-        model.addAttribute("h", weatherService.toDateTime());
+        model.addAttribute("hours", weatherService.getFirstDayHours());
+        model.addAttribute("h", weatherService.getHours());
 
         return "LongTermWeather";
     }
