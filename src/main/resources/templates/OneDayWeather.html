@@ -4,14 +4,16 @@
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <meta charset="UTF-8">
     <title>
-        Pogoda <th:block th:text="${weather.getCityName()}"></th:block>
+        Pogoda
+        <th:block th:text="${weather.getCityName()}"></th:block>
     </title>
 </head>
 <body>
 <div class="header" th:insert="Header"></div>
 <div class="city_name">
     <h1>
-        pogoda <th:block th:text="${weather.getCityName()}"></th:block>
+        pogoda
+        <th:block th:text="${weather.getCityName()}"></th:block>
     </h1>
 </div>
 <div class="city_date">
@@ -21,19 +23,17 @@
 </div>
 <div class="container">
     <div class="temp_and_icon">
-        <i>
-            <p class="temp">
-                <th:block th:text="${weather.getMain().getTemp()}"></th:block>&deg;C
-            </p>
-            <br>
-            <p class="image">
-                <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${weather.getWeather()[0].getIcon()})}">
-            </p>
-            <br>
-            <p class="description">
-                <th:block th:text="${weather.getWeather()[0].getDescription()}"></th:block>
-            </p>
-        </i>
+        <div class="temp">
+            <th:block th:text="${weather.getMain().getTemp()}"></th:block>&deg;C
+        </div>
+        <br>
+        <div class="image">
+            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${weather.getWeather()[0].getIcon()})}">
+        </div>
+        <br>
+        <div class="description">
+            <th:block th:text="${weather.getWeather()[0].getDescription()}"></th:block>
+        </div>
     </div>
     <table class="weather_table">
         <tr class="weather_table_header">
