@@ -2,6 +2,7 @@ package com.weather.forecast.service;
 
 import com.weather.forecast.model.longTermWeather.FiveDayForecast;
 import com.weather.forecast.model.longTermWeather.List;
+import com.weather.forecast.utils.ApiConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +22,12 @@ import java.util.stream.IntStream;
 @RequiredArgsConstructor
 public class LongTermWeatherService {
     private final RestTemplate restTemplate;
+    private final ApiConfig apiConfig;
     private ResponseEntity<FiveDayForecast> request;
 
     public FiveDayForecast getForecast(String cityName) {
-        String weatherId = "3070856697cde0dd9224dc1445904678";
         String url = "https://api.openweathermap.org/data/2.5/forecast?q={city}&units=metric&appid={weatherId}&lang=pl";
-        request = restTemplate.getForEntity(url, FiveDayForecast.class, cityName, weatherId);
+        request = restTemplate.getForEntity(url, FiveDayForecast.class, cityName, apiConfig.getKey());
         if (request.getStatusCode() == HttpStatus.OK){
             return request.getBody();
         }
