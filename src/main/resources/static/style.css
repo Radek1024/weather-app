@@ -158,18 +158,14 @@ body {
     grid-row-gap: 5px;
     overflow: auto;
     margin: auto;
-    background-color: black;
-    opacity: 0.35;
+    /*background-color: black;
+    opacity: 0.35;*/
     padding-bottom: 2%;
 }
 
-.first_day_lt_description {
-    color: dodgerblue;
-}
-
 .firstDay, .secondDay, .thirdDay, .fourthDay, .fifthDay {
-    border-left: 3px solid #dddddd;
-    border-right: 3px solid #dddddd;
+    /*border-left: 3px solid #dddddd;
+    border-right: 3px solid #dddddd;*/
     padding: 10px;
 }
 
@@ -190,21 +186,32 @@ body {
 }
 
 .icon_and_description_lt {
+   text-align: left;
+}
+
+.first_day_lt_description{
     color: white;
-    align-items: center;
     font-weight: bold;
 }
 
 .hour {
-    color: red;
+    color: white;
     font-size: large;
     text-align: left;
     font-style: italic;
     font-weight: bold;
 }
 
-.day_of_week_and_date_lt {
+.day_of_week_and_date_lt{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 3px solid dodgerblue;
+}
+
+.day_of_week_lt, .date_lt{
     color: dodgerblue;
     font-weight: bold;
-    font-size: large;
+    font-size: x-large;
 }
+
+
