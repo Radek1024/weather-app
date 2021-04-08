@@ -1,70 +1,105 @@
+@media screen and (min-width: 780px) {
+    .header{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+::selection{
+    color: white;
+    background: #390c39;
+}
+
 .header, .footer {
-    position: fixed;
-    width: 100%;
-    background-color: #333;
+    width: 100vw;
 }
 
-.header {
-    top: 0;
-    left: 0;
-    padding: 5px;
-}
-
-.header a {
+.header a{
     color: white;
     text-decoration: none;
-    overflow: hidden;
+}
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: #390c39;
+    background-size: cover;
+    font-size: x-large;
+    font-weight: bold;
+}
+.center{
+    justify-self: center;
+    align-self: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
-.center {
-    position: absolute;
-    left: 43%;
-    font-size: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.right {
-    float: right;
-    padding: 10px 35px;
+.right{
+    justify-self: end;
+    align-self: center;
+    grid-column-start: 3;
+    grid-column-end: 4;
 }
 
 .header a:hover {
-    /*background-color: #333333;*/
-    color: black;
+    /*background-color: #dddddd;*/
+    outline: 1px solid white;
+    /*color: black;*/
+    border-radius: 12px;
 }
 
 .footer {
-    text-align: center;
-    bottom: 0;
-    left: 0;
-    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #390c39;
 }
 
 .footer a {
     color: white;
     font-style: italic;
 }
-
 /**********************************************/
 html {
-    background: url("black-town-city-grey-minimalism-picture-shadow-dark.jpg") no-repeat fixed center;
-    background-size: 100% 95%;
+    background: ghostwhite;
+    width: 100vw;
+    height: 100vh;
 }
 
 body {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Alegreya Sans SC';
     margin: auto;
+    width: 100vw;
+    height: 100vh;
+}
+
+.welcome_container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 15% 1fr 5%;
 }
 
 .welcome_page {
-    padding: 15% 0;
-    text-align: center;
+    display: grid;
+    align-content: center;
+    justify-content: center;
 }
 
 .input {
     text-align: center;
-    padding: 5px;
+    padding-bottom: 20px;
+    color: #390c39;
+    background: ghostwhite;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+label{
+    font-style: italic;
+}
+
+.input.submit{
+    justify-content: center;
 }
 
 .city_name {
@@ -150,10 +185,12 @@ body {
     opacity: 0.35;
     border-radius: 5px;
 }
+
 /**********************************/
-            /*longTerm*/
+/*longTerm*/
 .container_lt {
     display: grid;
+    grid-area: main;
     grid-template-columns: auto auto auto auto auto;
     grid-row-gap: 5px;
     overflow: auto;
@@ -161,6 +198,7 @@ body {
     /*background-color: black;
     opacity: 0.35;*/
     padding-bottom: 2%;
+
 }
 
 .firstDay, .secondDay, .thirdDay, .fourthDay, .fifthDay {
@@ -186,10 +224,10 @@ body {
 }
 
 .icon_and_description_lt {
-   text-align: left;
+    text-align: left;
 }
 
-.first_day_lt_description{
+.first_day_lt_description {
     color: white;
     font-weight: bold;
 }
@@ -202,13 +240,13 @@ body {
     font-weight: bold;
 }
 
-.day_of_week_and_date_lt{
+.day_of_week_and_date_lt {
     display: flex;
     justify-content: space-around;
     border-bottom: 3px solid dodgerblue;
 }
 
-.day_of_week_lt, .date_lt{
+.day_of_week_lt, .date_lt {
     color: dodgerblue;
     font-weight: bold;
     font-size: x-large;

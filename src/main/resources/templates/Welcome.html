@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
     <meta charset="UTF-8">
     <title>Pogoda</title>
 </head>
 <body>
-<div class="header" th:insert="Header"></div>
+
+<div class="welcome_container">
+    <div class="header" th:insert="Header"></div>
     <div class="welcome_page">
         <form th:action="@{/decision}" th:object="${cityObject}" method="post">
-            <input class="input" type="text" placeholder="szukaj miasta" th:field="${cityObject.name}" required>
+            <input class="input" type="text" placeholder="szukaj miasta..." th:field="${cityObject.name}" required>
             <br>
             <input type="radio" id="one" value="1" th:field="${cityObject.id}" required>
             <label for="one">jednodniowa</label>
@@ -17,9 +21,12 @@
             <label for="two">pięciodniowa</label>
             <br>
             <br>
-            <input type="submit" value="szukaj">
+            <br>
+            <input class="submit" type="submit" value="szukaj">
         </form>
     </div>
-<div class="footer" th:insert="Footer"></div>
+    <div class="footer" th:insert="Footer"></div>
+</div>
+
 </body>
 </html>
