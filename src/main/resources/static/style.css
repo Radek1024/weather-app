@@ -1,14 +1,30 @@
-@media screen and (min-width: 780px) {
-    .header{
-        display: flex;
-        flex-direction: column;
+@media screen and (max-device-width: 576px) {
+    .section_name{
+        overflow-y: auto;
+    }
+    .section_body{
+        display: grid;
     }
 }
-
+/********************** Utils **********************/
 ::selection{
     color: white;
     background: #390c39;
 }
+html {
+    background: ghostwhite;
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+}
+
+/********************** Header & Footer **********************/
 
 .header, .footer {
     width: 100vw;
@@ -18,26 +34,29 @@
     color: white;
     text-decoration: none;
 }
+
 .header{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background: #390c39;
     background-size: cover;
-    font-size: x-large;
-    font-weight: bold;
 }
+
 .center{
     justify-self: center;
     align-self: center;
     grid-column-start: 2;
     grid-column-end: 3;
+    font-size: 3vw;
 }
 
 .right{
     justify-self: end;
     align-self: center;
+    padding-right: 2%;
     grid-column-start: 3;
     grid-column-end: 4;
+    font-size: 1.5vw;
 }
 
 .header a:hover {
@@ -55,22 +74,12 @@
 }
 
 .footer a {
+    font-size: 1.5vw;
     color: white;
     font-style: italic;
 }
-/**********************************************/
-html {
-    background: ghostwhite;
-    width: 100vw;
-    height: 100vh;
-}
 
-body {
-    font-family: 'Alegreya Sans SC';
-    margin: auto;
-    width: 100vw;
-    height: 100vh;
-}
+/********************** Welcome.html **********************/
 
 .welcome_container {
     height: 100vh;
@@ -80,9 +89,8 @@ body {
 }
 
 .welcome_page {
-    display: grid;
-    align-content: center;
-    justify-content: center;
+    align-self: center;
+    justify-self: center;
 }
 
 .input {
@@ -91,34 +99,63 @@ body {
     color: #390c39;
     background: ghostwhite;
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     outline: none;
 }
+
 label{
     font-style: italic;
 }
 
-.input.submit{
+.submit{
+   text-align: center;
+}
+
+/********************** LongTermWeather.html **********************/
+
+.container_lt {
+    display: grid;
     justify-content: center;
+    grid-area: main;
+    grid-template-columns: repeat(5, 20%);
+    grid-row-gap: 5px;
+    overflow: auto;
+    margin: auto;
+    padding-bottom: 2%;
+}
+.cont{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.firstDay, .secondDay, .thirdDay, .fourthDay, .fifthDay {
+    padding: 10px;
+}
+
+.lt_container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 15% auto;
 }
 
 .city_name {
-    margin: auto;
-    text-align: center;
+    text-align:  center;
     font-weight: 200;
-    font-size: 20px;
+    font-size: 1.5vw;
     font-style: italic;
-    color: #dddddd;
-    padding-top: 3%;
+    color: black;
+    padding-top: 2%;
 }
 
-.city_date {
+/*.city_date {
     margin: 0;
     text-align: center;
     font-style: italic;
     color: #dddddd;
+}*/
 
-}
+/********************** Error.html **********************/
 
 .error_message {
     padding-top: 20%;
@@ -143,6 +180,8 @@ label{
     color: #dddddd;
 }
 
+
+
 .temp {
     font-size: 55px;
 }
@@ -155,7 +194,7 @@ label{
 
 .weather_table {
     float: right;
-    color: #dddddd;
+    color: blue;
     font-style: italic;
     padding: 5px 5% 0 2%;
     text-align: left;
@@ -188,53 +227,40 @@ label{
 
 /**********************************/
 /*longTerm*/
-.container_lt {
-    display: grid;
-    grid-area: main;
-    grid-template-columns: auto auto auto auto auto;
-    grid-row-gap: 5px;
-    overflow: auto;
-    margin: auto;
-    /*background-color: black;
-    opacity: 0.35;*/
-    padding-bottom: 2%;
 
-}
-
-.firstDay, .secondDay, .thirdDay, .fourthDay, .fifthDay {
-    /*border-left: 3px solid #dddddd;
-    border-right: 3px solid #dddddd;*/
-    padding: 10px;
-}
 
 .weather_table_lt {
-    color: white;
+    color: #390c39;
     border-bottom: 1px solid #dddddd;
+    font-size: 1.10vw;
 }
 
 .weather_table_lt td:nth-child(even) {
-    padding: 20px;
     text-align: center;
     vertical-align: bottom;
 }
 
 .weather_table_lt tr:nth-child(odd) {
     font-weight: bold;
-    color: #4caf50;
+    color: white;
+    background: #390c39;
 }
 
 .icon_and_description_lt {
     text-align: left;
+    background: dimgrey;
+    border-radius: 5%;
 }
 
 .first_day_lt_description {
     color: white;
+    font-size: 1.35vw;
     font-weight: bold;
 }
 
 .hour {
-    color: white;
-    font-size: large;
+    color: black;
+    font-size: 1.85vw;
     text-align: left;
     font-style: italic;
     font-weight: bold;
@@ -243,13 +269,13 @@ label{
 .day_of_week_and_date_lt {
     display: flex;
     justify-content: space-around;
-    border-bottom: 3px solid dodgerblue;
+    border-bottom: 1px solid #390c39;
 }
 
 .day_of_week_lt, .date_lt {
-    color: dodgerblue;
+    color: #390c39;
     font-weight: bold;
-    font-size: x-large;
+    font-size: 2vw;
 }
 
 
