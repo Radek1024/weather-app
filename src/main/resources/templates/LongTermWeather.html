@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/Footer.html}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/Header.html}"/>
@@ -22,10 +23,13 @@
         </div>
         <div class="container_lt">
             <div class="firstDay">
-                <div class="day_of_week_and_date_lt">
-                    <div class="day_of_week_lt" th:text="${dayOfWeek.get(0)}"></div>
-                    <div class="date_lt" th:text="${#temporals.format(#temporals.createNow(),'dd.MM.yyyy')}"></div>
-                </div>
+                    <div class="day_of_week_lt">
+                        <th:block th:text="${dayOfWeek.get(0)}"></th:block>
+                        <br>
+                        <div class="date_lt">
+                            <th:block th:text="${#temporals.format(#temporals.createNow(),'dd.MM.yyyy')}"></th:block>
+                        </div>
+                    </div>
                 <div class="first_day_lt" th:each="i , stat : ${firstDay}">
                     <div class="hour">
                         <p>godzina:
@@ -92,13 +96,16 @@
             </div>
 
             <div class="secondDay">
-                <div class="day_of_week_and_date_lt">
-                    <div class="day_of_week_lt" th:text="${dayOfWeek.get(1)}"></div>
-                    <div class="date_lt" th:text="${#temporals.format(day.plusDays(1),'dd.MM.yyyy')}"></div>
+                <div class="day_of_week_lt">
+                    <th:block th:text="${dayOfWeek.get(1)}"></th:block>
+                    <br>
+                    <div class="date_lt">
+                        <th:block th:text="${#temporals.format(day.plusDays(1),'dd.MM.yyyy')}"></th:block>
+                    </div>
                 </div>
                 <div class="second_day_lt" th:each="i , stat : ${secondDay}">
                     <div class="hour">
-                        <p>godzina:
+                        <p>godzina:<br>
                             <th:block th:text="${#temporals.format(h.get(stat.index),'HH:mm')}"></th:block>
                         </p>
                     </div>
@@ -163,10 +170,14 @@
             </div>
 
             <div class="thirdDay">
-                <div class="day_of_week_and_date_lt">
-                    <div class="day_of_week_lt" th:text="${dayOfWeek.get(2)}"></div>
-                    <div class="date_lt" th:text="${#temporals.format(day.plusDays(2),'dd.MM.yyyy')}"></div>
+                <div class="day_of_week_lt">
+                    <th:block th:text="${dayOfWeek.get(2)}"></th:block>
+                    <br>
+                    <div class="date_lt">
+                        <th:block th:text="${#temporals.format(day.plusDays(2),'dd.MM.yyyy')}"></th:block>
+                    </div>
                 </div>
+
                 <div class="third_day_lt" th:each="i , stat : ${thirdDay}">
                     <div class="hour">
                         <p>godzina:
@@ -234,10 +245,14 @@
             </div>
 
             <div class="fourthDay">
-                <div class="day_of_week_and_date_lt">
-                    <div class="day_of_week_lt" th:text="${dayOfWeek.get(3)}"></div>
-                    <div class="date_lt" th:text="${#temporals.format(day.plusDays(3),'dd.MM.yyyy')}"></div>
+                <div class="day_of_week_lt">
+                    <th:block th:text="${dayOfWeek.get(3)}"></th:block>
+                    <br>
+                    <div class="date_lt">
+                        <th:block th:text="${#temporals.format(day.plusDays(3),'dd.MM.yyyy')}"></th:block>
+                    </div>
                 </div>
+
                 <div class="fourth_day_lt" th:each="i , stat : ${fourthDay}">
                     <div class="hour">
                         <p>godzina:
@@ -305,9 +320,12 @@
             </div>
 
             <div class="fifthDay">
-                <div class="day_of_week_and_date_lt">
-                    <div class="day_of_week_lt" th:text="${dayOfWeek.get(4)}"></div>
-                    <div class="date_lt" th:text="${#temporals.format(day.plusDays(4),'dd.MM.yyyy')}"></div>
+                <div class="day_of_week_lt">
+                    <th:block th:text="${dayOfWeek.get(4)}"></th:block>
+                    <br>
+                    <div class="date_lt">
+                        <th:block th:text="${#temporals.format(day.plusDays(4),'dd.MM.yyyy')}"></th:block>
+                    </div>
                 </div>
                 <div class="fifth_day_lt" th:each="i , stat : ${fifthDay}">
                     <div class="hour">
