@@ -1,121 +1,125 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
     <title>
         Pogoda
         <th:block th:text="${weather.getCityName()}"></th:block>
     </title>
 </head>
+
 <body>
-<div class="header" th:insert="Header"></div>
-<div class="city_name">
-    <h1>
-        pogoda
-        <th:block th:text="${weather.getCityName()}"></th:block>
-    </h1>
-</div>
-<div class="city_date">
-    <h2>
-        <th:block th:text="${dayOfWeek}"></th:block>
-    </h2>
-</div>
-<div class="container">
-    <div class="temp_and_icon">
-        <div class="temp">
-            <th:block th:text="${weather.getMain().getTemp()}"></th:block>&deg;C
+<div class="one_day_container">
+    <div class="header" th:insert="Header"></div>
+    <section class="content">
+        <div class="city_name">
+            <h1>pogoda
+                <th:block th:text="${weather.getCityName()}"></th:block>
+            </h1>
         </div>
-        <br>
-        <div class="image">
-            <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${weather.getWeather()[0].getIcon()})}">
+        <div class="city_date">
+            <th:block th:text="${dayOfWeek}"></th:block>
         </div>
-        <br>
-        <div class="description">
-            <th:block th:text="${weather.getWeather()[0].getDescription()}"></th:block>
+        <div class="container">
+            <div class="temp_and_icon">
+                <div class="temp">
+                    <th:block th:text="${weather.getMain().getTemp()}"></th:block>&deg;C
+                </div>
+                <br>
+                <div class="image">
+                    <img th:src="@{'http://openweathermap.org/img/wn/{img}@2x.png'(img=${weather.getWeather()[0].getIcon()})}">
+                </div>
+                <br>
+                <div class="description">
+                    <th:block th:text="${weather.getWeather()[0].getDescription()}"></th:block>
+                </div>
+            </div>
+            <table class="weather_table">
+                <tr class="weather_table_header">
+                    <td>
+                        zachmurzenie
+                    </td>
+                    <td>
+                        opady
+                    </td>
+                    <td>
+                        śnieg
+                    </td>
+                    <td>
+                        ciśnienie
+                    </td>
+                    <td>
+                        wilgotność
+                    </td>
+                </tr>
+                <tr class="weather_table_data">
+                    <td>
+                        <th:block th:text="${weather.getClouds().getAll()}"></th:block>
+                        %
+                    </td>
+                    <td>
+                        <th:block th:text="${weather.getRain()?.getRainOneHour()}"></th:block>
+                        mm
+                    </td>
+                    <td>
+                        <th:block th:text="${weather.getSnow()?.getSnowOneHour()}"></th:block>
+                        mm
+                    </td>
+                    <td>
+                        <th:block th:text="${weather.getMain().getPressure()}"></th:block>
+                        HPa
+                    </td>
+                    <td>
+                        <th:block th:text="${weather.getMain().getHumidity()}"></th:block>
+                        %
+                    </td>
+                </tr>
+                <tr class="weather_table_header">
+                    <td>
+                        temperatura odczuwalna
+                    </td>
+                    <td>
+                        temperatura maksymalna
+                    </td>
+                    <td>
+                        temperatura minimalna
+                    </td>
+                    <td>
+                        ciśnienie na<br>poziomie morza
+                    </td>
+                    <td>
+                        ciśnienie na<br>poziomie gruntu
+                    </td>
+                </tr>
+                <tr class="weather_table_data">
+                    <td>
+                        <th:block th:text="${weather.getMain().getFeelsLike()}"></th:block>
+                        &deg;C
+                    </td>
+                    <td>
+                        <th:block th:text="${weather.getMain().getTempMax()}"></th:block>
+                        &deg;C
+                    </td>
+                    <td>
+                        <th:block th:text="${weather.getMain().getTempMin()}"></th:block>
+                        &deg;C
+                    </td>
+                    <td>
+                        <th:block th:text="${weather.getMain().getSeaLevel()}"></th:block>
+                        HPa
+                    </td>
+                    <td>
+                        <th:block th:text="${weather.getMain().getGroundLevel()}"></th:block>
+                        HPa
+                    </td>
+                </tr>
+            </table>
         </div>
-    </div>
-    <table class="weather_table">
-        <tr class="weather_table_header">
-            <td>
-                zachmurzenie
-            </td>
-            <td>
-                opady
-            </td>
-            <td>
-                śnieg
-            </td>
-            <td>
-                ciśnienie
-            </td>
-            <td>
-                wilgotność
-            </td>
-        </tr>
-        <tr class="weather_table_data">
-            <td>
-                <th:block th:text="${weather.getClouds().getAll()}"></th:block>
-                %
-            </td>
-            <td>
-                <th:block th:text="${weather.getRain()?.getRainOneHour()}"></th:block>
-                mm
-            </td>
-            <td>
-                <th:block th:text="${weather.getSnow()?.getSnowOneHour()}"></th:block>
-                mm
-            </td>
-            <td>
-                <th:block th:text="${weather.getMain().getPressure()}"></th:block>
-                HPa
-            </td>
-            <td>
-                <th:block th:text="${weather.getMain().getHumidity()}"></th:block>
-                %
-            </td>
-        </tr>
-        <tr class="weather_table_header">
-            <td>
-                temperatura odczuwalna
-            </td>
-            <td>
-                temperatura maksymalna
-            </td>
-            <td>
-                temperatura minimalna
-            </td>
-            <td>
-                ciśnienie na<br>poziomie morza
-            </td>
-            <td>
-                ciśnienie na<br>poziomie gruntu
-            </td>
-        </tr>
-        <tr class="weather_table_data">
-            <td>
-                <th:block th:text="${weather.getMain().getFeelsLike()}"></th:block>
-                &deg;C
-            </td>
-            <td>
-                <th:block th:text="${weather.getMain().getTempMax()}"></th:block>
-                &deg;C
-            </td>
-            <td>
-                <th:block th:text="${weather.getMain().getTempMin()}"></th:block>
-                &deg;C
-            </td>
-            <td>
-                <th:block th:text="${weather.getMain().getSeaLevel()}"></th:block>
-                HPa
-            </td>
-            <td>
-                <th:block th:text="${weather.getMain().getGroundLevel()}"></th:block>
-                HPa
-            </td>
-        </tr>
-    </table>
+    </section>
+    <div class="footer" th:insert="Footer"></div>
 </div>
-<div class="footer" th:insert="Footer"></div>
 </body>
 </html>

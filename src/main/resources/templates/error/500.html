@@ -2,13 +2,20 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/Footer.html}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/Header.html}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
     <title>server error</title>
 </head>
 <body>
-<div class="header" th:insert="Header"></div>
-<div class="error_message">Uuups! Coś poszło nie tak... </div>
-<h1 class="five_o_o">500</h1>
-<div class="footer" th:insert="Footer"></div>
+<div class="error_container">
+    <div class="header" th:insert="Header"></div>
+    <div class="error_message">Uuups! Coś poszło nie tak...
+        <div class="five_o_o">500</div>
+    </div>
+    <div class="footer" th:insert="Footer"></div>
+</div>
 </body>
 </html>

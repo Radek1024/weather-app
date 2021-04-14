@@ -53,9 +53,7 @@ body {
 }
 
 .header a:hover {
-    /*background-color: #dddddd;*/
     outline: 1px solid white;
-    /*color: black;*/
     border-radius: 12px;
 }
 
@@ -78,7 +76,7 @@ body {
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-rows: 12% 1fr 5%;
+    grid-template-rows: 10% 1fr 5%;
 }
 
 .welcome_page {
@@ -87,6 +85,7 @@ body {
 }
 
 .input {
+    width: 100%;
     text-align: center;
     padding-bottom: 20px;
     color: #390c39;
@@ -105,6 +104,13 @@ label{
 }
 
 /********************** LongTermWeather.html **********************/
+
+.lt_container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 10% 90%;
+}
 
 .cont{
     overflow-y: scroll;
@@ -136,17 +142,10 @@ label{
     align-self: center;
 }
 
-.lt_container{
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    grid-template-rows: 12% 88%;
-}
-
 .city_name {
     text-align:  center;
     font-weight: 200;
-    font-size: 18px;
+    font-size: 1.8vw;
     font-style: italic;
     color: black;
 }
@@ -198,29 +197,57 @@ label{
     font-size: 1.8vw;
 }
 
-
-/*.city_date {
-    margin: 0;
-    text-align: center;
-    font-style: italic;
-    color: #dddddd;
-}*/
-
 /********************** Error.html **********************/
 
+.error_container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 10% 1fr 5%;
+}
+
 .error_message {
-    padding-top: 20%;
-    margin: auto;
-    text-align: center;
-    color: #4caf50;
-    font-size: 35px;
+    align-self: center;
+    justify-self: center;
+    font-size: 5vw;
+    font-weight: bold;
 }
 
 .for_o_four, .five_o_o {
-    padding-top: 17px;
+    color: black;
     text-align: center;
-    font-size: 50px;
-    color: #4caf50;
+    font-size: 7vw;
+    font-weight: bold;
+}
+
+/********************** OneDayWeather.html **********************/
+
+.one_day_container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 10% 1fr 5%;
+}
+.content{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.city_date {
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+    color: black;
+    font-size: 2vw;
+}
+
+.container {
+    display: grid;
+    height: auto;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows: 1fr;
+    place-self: center;
+    border: 1px solid blue;
 }
 
 .temp_and_icon {
@@ -228,7 +255,7 @@ label{
     text-align: center;
     padding: 10px 0 10px 5%;
     image-resolution: normal;
-    color: #dddddd;
+    color: #390c39;
 }
 
 .temp {
@@ -264,17 +291,19 @@ label{
     color: #4caf50;
 }
 
-/***********************************/
-.container {
-    overflow: auto;
-    margin: auto;
-    width: 85%;
-    background-color: black;
-    opacity: 0.35;
-    border-radius: 5px;
-}
 
 @media only screen and (max-width: 576px) {
+    .center{
+        font-size: 4vw;
+    }
+
+    .right{
+        font-size: 2.5vw;
+    }
+
+    .footer a{
+        font-size: 2.75vw;
+    }
 
     .firstDay, .secondDay, .thirdDay, .fourthDay, .fifthDay{
         display: grid;
@@ -289,12 +318,32 @@ label{
 
     .day_of_week_lt{
         grid-column: span 3;
-        /*justify-self: center;
-        align-self: center;*/
         text-align: center;
         padding-top: 2%;
         width: 100%;
         border-bottom: 1px solid black;
+        font-size: 3vw;
+    }
+    .date_lt{
+        font-size: 2.5vw;
+    }
+
+    .first_day_lt_description {
+        color: black;
+        font-size: 2.5vw;
+        font-weight: bold;
+    }
+    .hour{
+        font-size: 3vw;
+    }
+
+    .weather_table_lt {
+        font-size: 2vw;
+        text-align: center;
+    }
+
+    .city_name{
+        font-size: 2vw;
     }
 
 }

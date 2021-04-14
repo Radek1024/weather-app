@@ -33,7 +33,7 @@ public class CurrentWeatherService {
 
     public String getDate(){
         return LocalDate.now().format(
-                DateTimeFormatter.ofPattern("EEEE, dd/MM/yyyy",
+                DateTimeFormatter.ofPattern("EEEE, dd.MM.yyyy",
                 Locale.forLanguageTag("pl")));
     }
 
