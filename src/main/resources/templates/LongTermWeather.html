@@ -21,10 +21,9 @@
                 <th:block th:text="${weather1.getCity().getName()}"></th:block>
             </h1>
         </div>
-        <div class="container_lt">
             <div class="firstDay">
                     <div class="day_of_week_lt">
-                        <th:block th:text="${dayOfWeek.get(0)}"></th:block>
+                        <th:block th:text="${dayOfWeek.get(0)}"></th:block>,
                         <br>
                         <div class="date_lt">
                             <th:block th:text="${#temporals.format(#temporals.createNow(),'dd.MM.yyyy')}"></th:block>
@@ -392,7 +391,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
         <div class="footer" th:insert="Footer"></div>
     </div>
 </div>
