@@ -1,89 +1,212 @@
+
+/********************** Utils **********************/
+::selection{
+    color: white;
+    background: #390c39;
+}
+html {
+    background: ghostwhite;
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+}
+
+/********************** Header & Footer **********************/
+
 .header, .footer {
-    position: fixed;
-    width: 100%;
-    background-color: #333;
+    width: 100vw;
 }
 
-.header {
-    top: 0;
-    left: 0;
-    padding: 5px;
-}
-
-.header a {
+.header a{
     color: white;
     text-decoration: none;
-    overflow: hidden;
 }
 
-.center {
-    position: absolute;
-    left: 43%;
-    font-size: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: #390c39;
+    background-size: cover;
 }
 
-.right {
-    float: right;
-    padding: 10px 35px;
+.center{
+    justify-self: center;
+    align-self: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    font-size: 3vw;
+}
+
+.right{
+    justify-self: end;
+    align-self: center;
+    padding-right: 2%;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    font-size: 1.5vw;
 }
 
 .header a:hover {
-    /*background-color: #333333;*/
-    color: black;
+    /*background-color: #dddddd;*/
+    outline: 1px solid white;
+    /*color: black;*/
+    border-radius: 12px;
 }
 
 .footer {
-    text-align: center;
-    bottom: 0;
-    left: 0;
-    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #390c39;
 }
 
 .footer a {
+    font-size: 1.5vw;
     color: white;
     font-style: italic;
 }
 
-/**********************************************/
-html {
-    background: url("black-town-city-grey-minimalism-picture-shadow-dark.jpg") no-repeat fixed center;
-    background-size: 100% 95%;
-}
+/********************** Welcome.html **********************/
 
-body {
-    font-family: Helvetica, Arial, sans-serif;
-    margin: auto;
+.welcome_container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 12% 1fr 5%;
 }
 
 .welcome_page {
-    padding: 15% 0;
-    text-align: center;
+    align-self: center;
+    justify-self: center;
 }
 
 .input {
     text-align: center;
-    padding: 5px;
+    padding-bottom: 20px;
+    color: #390c39;
+    background: ghostwhite;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+
+label{
+    font-style: italic;
+}
+
+.submit{
+   text-align: center;
+}
+
+/********************** LongTermWeather.html **********************/
+
+.cont{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.firstDay, .thirdDay, .fifthDay{
+    display: grid;
+    grid-template-columns: 12% repeat(4, auto);
+    grid-template-rows: repeat(2,auto);
+    background: #dddddd;
+}
+
+.secondDay, .fourthDay{
+    display: grid;
+    grid-template-columns: 12% repeat(4, auto);
+    grid-template-rows: repeat(2,auto);
+    background: rgba(21,21,21,0.39);
+}
+
+.fifthDay{
+    padding-bottom: 3%;
+}
+.day_of_week_lt{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row: span 2;
+    justify-self: center;
+    align-self: center;
+}
+
+.lt_container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 12% 88%;
 }
 
 .city_name {
-    margin: auto;
-    text-align: center;
+    text-align:  center;
     font-weight: 200;
-    font-size: 20px;
+    font-size: 18px;
     font-style: italic;
-    color: #dddddd;
-    padding-top: 3%;
+    color: black;
+}
+.weather_table_lt {
+    color: black;
+    font-size: 1.10vw;
+    text-align: center;
 }
 
-.city_date {
+.weather_table_lt td:nth-child(even) {
+    vertical-align: bottom;
+}
+
+.weather_table_lt tr:nth-child(odd) {
+    font-weight: bold;
+    color: white;
+    background: #390c39;
+    text-align: center;
+}
+
+.icon_and_description_lt {
+    text-align: left;
+}
+
+.first_day_lt_description {
+    color: black;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.hour {
+    color: black;
+    font-size: 1.5vw;
+    text-align: left;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.day_of_week_and_date_lt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.day_of_week_lt, .date_lt {
+    color: #390c39;
+    font-weight: bold;
+    font-size: 1.8vw;
+}
+
+
+/*.city_date {
     margin: 0;
     text-align: center;
     font-style: italic;
     color: #dddddd;
+}*/
 
-}
+/********************** Error.html **********************/
 
 .error_message {
     padding-top: 20%;
@@ -120,7 +243,7 @@ body {
 
 .weather_table {
     float: right;
-    color: #dddddd;
+    color: blue;
     font-style: italic;
     padding: 5px 5% 0 2%;
     text-align: left;
@@ -150,68 +273,28 @@ body {
     opacity: 0.35;
     border-radius: 5px;
 }
-/**********************************/
-            /*longTerm*/
-.container_lt {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    grid-row-gap: 5px;
-    overflow: auto;
-    margin: auto;
-    /*background-color: black;
-    opacity: 0.35;*/
-    padding-bottom: 2%;
+
+@media only screen and (max-width: 576px) {
+
+    .firstDay, .secondDay, .thirdDay, .fourthDay, .fifthDay{
+        display: grid;
+        grid-template-columns: repeat(3,auto);
+        background: #dddddd;
+        justify-items: center;
+    }
+
+    .secondDay, .fourthDay{
+        background: rgba(21,21,21,0.39);
+    }
+
+    .day_of_week_lt{
+        grid-column: span 3;
+        /*justify-self: center;
+        align-self: center;*/
+        text-align: center;
+        padding-top: 2%;
+        width: 100%;
+        border-bottom: 1px solid black;
+    }
+
 }
-
-.firstDay, .secondDay, .thirdDay, .fourthDay, .fifthDay {
-    /*border-left: 3px solid #dddddd;
-    border-right: 3px solid #dddddd;*/
-    padding: 10px;
-}
-
-.weather_table_lt {
-    color: white;
-    border-bottom: 1px solid #dddddd;
-}
-
-.weather_table_lt td:nth-child(even) {
-    padding: 20px;
-    text-align: center;
-    vertical-align: bottom;
-}
-
-.weather_table_lt tr:nth-child(odd) {
-    font-weight: bold;
-    color: #4caf50;
-}
-
-.icon_and_description_lt {
-   text-align: left;
-}
-
-.first_day_lt_description{
-    color: white;
-    font-weight: bold;
-}
-
-.hour {
-    color: white;
-    font-size: large;
-    text-align: left;
-    font-style: italic;
-    font-weight: bold;
-}
-
-.day_of_week_and_date_lt{
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 3px solid dodgerblue;
-}
-
-.day_of_week_lt, .date_lt{
-    color: dodgerblue;
-    font-weight: bold;
-    font-size: x-large;
-}
-
-
